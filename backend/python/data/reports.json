@@ -1,0 +1,32 @@
+[
+    {
+        "lat": -23.55052,
+        "lng": -46.633308,
+        "amount": 5,
+        "severity": "low"
+    },
+    {
+        "lat": -22.906847,
+        "lng": -43.172896,
+        "amount": 15,
+        "severity": "medium"
+    },
+    {
+        "lat": -25.428954,
+        "lng": -49.267137,
+        "amount": 25,
+        "severity": "high"
+    },
+    {
+        "lat": -30.034647,
+        "lng": -51.217658,
+        "amount": 8,
+        "severity": "low"
+    },
+    {
+        "lat": -15.7801,
+        "lng": -47.9292,
+        "amount": 12,
+        "severity": "medium"
+    }
+]
