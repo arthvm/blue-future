@@ -2,31 +2,41 @@
     {
         "lat": -23.55052,
         "lng": -46.633308,
-        "amount": 5,
+        "user": null,
+        "collected": false,
+        "description": "Garrafas plásticas boiando na superfície do mar",
         "severity": "low"
     },
     {
         "lat": -22.906847,
         "lng": -43.172896,
-        "amount": 15,
+        "user": "user1",
+        "collected": true,
+        "description": "Redes de pesca abandonadas entre os corais",
         "severity": "medium"
     },
     {
         "lat": -25.428954,
         "lng": -49.267137,
-        "amount": 25,
+        "user": null,
+        "collected": false,
+        "description": "Resíduos de óleo espalhados na praia",
         "severity": "high"
     },
     {
         "lat": -30.034647,
         "lng": -51.217658,
-        "amount": 8,
+        "user": "user2",
+        "collected": true,
+        "description": "Fragmentos de vidro misturados na areia",
         "severity": "low"
     },
     {
         "lat": -15.7801,
         "lng": -47.9292,
-        "amount": 12,
+        "user": null,
+        "collected": false,
+        "description": "Sacos plásticos presos em algas marinhas",
         "severity": "medium"
     }
 ]

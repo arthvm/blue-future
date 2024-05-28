@@ -8,7 +8,7 @@ DATA_FILE = 'data/reports.json'
 
 def load_data():
     if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, "r") as data_file:
+        with open(DATA_FILE, "r", encoding="utf-8") as data_file:
             return json.load(data_file)
     return []
 
@@ -19,9 +19,9 @@ def create_map():
     reports = load_data();
     for report in reports:
         popup_html = f"""
-        <span>Registered by: Anonymous</span>
+        <span>Registered by: {report["user"] if not None else "Anonymous"}</span>
         <ul>
-            <li>Quantidade de lixo: {report["amount"]}</li>
+            <li>Descrição: {report["description"]}</li>
             <li>Gravidade: {report["severity"]}</li>
         </ul>
         """
