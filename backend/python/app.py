@@ -1,7 +1,7 @@
 import os
 import folium
 from folium.plugins import MarkerCluster
-from flask import Flask, json, render_template
+from flask import Flask, json, jsonify, render_template, request
 
 
 app = Flask(__name__)
@@ -13,6 +13,11 @@ def load_data():
         with open(DATA_FILE, "r", encoding="utf-8") as data_file:
             return json.load(data_file)
     return []
+
+def save_data(data):
+    with open(DATA_FILE, "w") as data_file:
+        json.dump(data, data_file, indent=4)
+            
 
 @app.route("/map")
 def create_map():
@@ -47,6 +52,35 @@ def create_map():
 
     map.save("templates/map.html")
     return render_template("map.html")
+
+@app.route("/report", methods=['POST'])
+def report():
+    data = request.get_json()
+    if data == "None":
+        return jsonify({"error": "Invalid body on request --> Expected JSON File"}), 400
+
+    lat = float(data.get("lat"))
+    lng = float(data.get("lng"))
+    user = data.get("user")
+    collected = bool(data.get("collected"))
+    description = data.get("description")
+    severity = data.get("severity")
+
+    reports = load_data()
+
+    reports.append(
+        {
+            "lat": lat,
+            "lng": lng,
+            "user": user,
+            "collected": collected,
+            "description": description,
+            "severity": severity
+        }
+    )
+    
+    save_data(reports)
+    return jsonify({"message": f"JSON file was received succesfuly"}), 200
 
 
 if __name__ == '__main__':

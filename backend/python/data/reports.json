@@ -1,42 +1,58 @@
 [
     {
+        "collected": false,
+        "description": "Garrafas pl\u00e1sticas boiando na superf\u00edcie do mar",
         "lat": -23.55052,
         "lng": -46.633308,
-        "user": null,
-        "collected": false,
-        "description": "Garrafas plásticas boiando na superfície do mar",
-        "severity": "low"
+        "severity": "low",
+        "user": null
     },
     {
-        "lat": -22.906847,
-        "lng": -43.172896,
-        "user": "user1",
         "collected": true,
         "description": "Redes de pesca abandonadas entre os corais",
-        "severity": "medium"
+        "lat": -22.906847,
+        "lng": -43.172896,
+        "severity": "medium",
+        "user": "user1"
     },
     {
+        "collected": false,
+        "description": "Res\u00edduos de \u00f3leo espalhados na praia",
         "lat": -25.428954,
         "lng": -49.267137,
-        "user": null,
-        "collected": false,
-        "description": "Resíduos de óleo espalhados na praia",
-        "severity": "high"
+        "severity": "high",
+        "user": null
     },
     {
-        "lat": -30.034647,
-        "lng": -51.217658,
-        "user": "user2",
         "collected": true,
         "description": "Fragmentos de vidro misturados na areia",
-        "severity": "low"
+        "lat": -30.034647,
+        "lng": -51.217658,
+        "severity": "low",
+        "user": "user2"
     },
     {
+        "collected": false,
+        "description": "Sacos pl\u00e1sticos presos em algas marinhas",
         "lat": -15.7801,
         "lng": -47.9292,
-        "user": null,
+        "severity": "medium",
+        "user": null
+    },
+    {
         "collected": false,
-        "description": "Sacos plásticos presos em algas marinhas",
-        "severity": "medium"
+        "description": "Algum lixo para teste",
+        "lat": -23.0,
+        "lng": -46.0,
+        "severity": "high",
+        "user": "teste1"
+    },
+    {
+        "collected": false,
+        "description": "Algum lixo para teste",
+        "lat": -20.0,
+        "lng": -46.0,
+        "severity": "high",
+        "user": "teste1"
     }
 ]
