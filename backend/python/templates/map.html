@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9edc20cef5b1817195906fa72eb561af {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_9edc20cef5b1817195906fa72eb561af" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_9edc20cef5b1817195906fa72eb561af = L.map(
+                "map_9edc20cef5b1817195906fa72eb561af",
+                {
+                    center: [-23.5489, -46.6388],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_344be483847af1b88898dfdc7c4fb3e2 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_344be483847af1b88898dfdc7c4fb3e2.addTo(map_9edc20cef5b1817195906fa72eb561af);
+        
+    
+            var marker_cluster_d539a88974d880c4b62d9b376d6cab6c = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            var marker_c3a64b588d388d9e4a72c1746e4c7f22 = L.marker(
+                [-23.55052, -46.633308],
+                {}
+            ).addTo(marker_cluster_d539a88974d880c4b62d9b376d6cab6c);
+        
+    
+            var icon_b164c3ebe17d2354e4bcc9f465243e3e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_c3a64b588d388d9e4a72c1746e4c7f22.setIcon(icon_b164c3ebe17d2354e4bcc9f465243e3e);
+        
+    
+        var popup_a0caffde7bb52af91b08f709f9ec9689 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e55ece60be5652dcbbfe5426f7d9c0ac = $(`<div id="html_e55ece60be5652dcbbfe5426f7d9c0ac" style="width: 100.0%; height: 100.0%;">         <span>Registered by: Anonymous</span>         <ul>             <li>Descrição: Garrafas plásticas boiando na superfície do mar</li>             <li>Gravidade: low</li>         </ul>         </div>`)[0];
+                popup_a0caffde7bb52af91b08f709f9ec9689.setContent(html_e55ece60be5652dcbbfe5426f7d9c0ac);
+            
+        
+
+        marker_c3a64b588d388d9e4a72c1746e4c7f22.bindPopup(popup_a0caffde7bb52af91b08f709f9ec9689)
+        ;
+
+        
+    
+    
+            var marker_c0e0e61ee9cd28424f14855304003b8a = L.marker(
+                [-25.428954, -49.267137],
+                {}
+            ).addTo(marker_cluster_d539a88974d880c4b62d9b376d6cab6c);
+        
+    
+            var icon_1f9d6ffe91c1e9cd709ee308ea91d5b5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c0e0e61ee9cd28424f14855304003b8a.setIcon(icon_1f9d6ffe91c1e9cd709ee308ea91d5b5);
+        
+    
+        var popup_da68a0830bfec6dde7698ee2ea115ad2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_55612fd4ed4367f1ca4cd4eec49d4eea = $(`<div id="html_55612fd4ed4367f1ca4cd4eec49d4eea" style="width: 100.0%; height: 100.0%;">         <span>Registered by: Anonymous</span>         <ul>             <li>Descrição: Resíduos de óleo espalhados na praia</li>             <li>Gravidade: high</li>         </ul>         </div>`)[0];
+                popup_da68a0830bfec6dde7698ee2ea115ad2.setContent(html_55612fd4ed4367f1ca4cd4eec49d4eea);
+            
+        
+
+        marker_c0e0e61ee9cd28424f14855304003b8a.bindPopup(popup_da68a0830bfec6dde7698ee2ea115ad2)
+        ;
+
+        
+    
+    
+            var marker_00f2e738150997668414072e3c1e8c48 = L.marker(
+                [-15.7801, -47.9292],
+                {}
+            ).addTo(marker_cluster_d539a88974d880c4b62d9b376d6cab6c);
+        
+    
+            var icon_f3a33fef1ffcf6d079955dd32ba9a311 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_00f2e738150997668414072e3c1e8c48.setIcon(icon_f3a33fef1ffcf6d079955dd32ba9a311);
+        
+    
+        var popup_2a69980a679583acdff6e685055c1cc7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6c1da05f09c8eae116b450cdcda7e9e4 = $(`<div id="html_6c1da05f09c8eae116b450cdcda7e9e4" style="width: 100.0%; height: 100.0%;">         <span>Registered by: Anonymous</span>         <ul>             <li>Descrição: Sacos plásticos presos em algas marinhas</li>             <li>Gravidade: medium</li>         </ul>         </div>`)[0];
+                popup_2a69980a679583acdff6e685055c1cc7.setContent(html_6c1da05f09c8eae116b450cdcda7e9e4);
+            
+        
+
+        marker_00f2e738150997668414072e3c1e8c48.bindPopup(popup_2a69980a679583acdff6e685055c1cc7)
+        ;
+
+        
+    
+    
+            var marker_578b3f7ef6ee7aa7d18d4bff76c7f476 = L.marker(
+                [-23.0, -46.0],
+                {}
+            ).addTo(marker_cluster_d539a88974d880c4b62d9b376d6cab6c);
+        
+    
+            var icon_4480082b5687b816703fe41d07f17d34 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_578b3f7ef6ee7aa7d18d4bff76c7f476.setIcon(icon_4480082b5687b816703fe41d07f17d34);
+        
+    
+        var popup_8ba937b7ff59625c32a5b99ee0b64e6a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0a3a9bb3efaa5739b6381ee25683054b = $(`<div id="html_0a3a9bb3efaa5739b6381ee25683054b" style="width: 100.0%; height: 100.0%;">         <span>Registered by: teste1</span>         <ul>             <li>Descrição: Algum lixo para teste</li>             <li>Gravidade: high</li>         </ul>         </div>`)[0];
+                popup_8ba937b7ff59625c32a5b99ee0b64e6a.setContent(html_0a3a9bb3efaa5739b6381ee25683054b);
+            
+        
+
+        marker_578b3f7ef6ee7aa7d18d4bff76c7f476.bindPopup(popup_8ba937b7ff59625c32a5b99ee0b64e6a)
+        ;
+
+        
+    
+    
+            marker_cluster_d539a88974d880c4b62d9b376d6cab6c.addTo(map_9edc20cef5b1817195906fa72eb561af);
+        
+</script>
+</html>
