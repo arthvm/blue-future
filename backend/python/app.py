@@ -71,6 +71,9 @@ def create_map():
 
     reports = load_data();
     for report in reports:
+        if report["collected"]:
+            continue
+
         popup_html = f"""
         <span>Registered by: {report["user"] if not "None" else "Anonymous"}</span>
         <ul>
