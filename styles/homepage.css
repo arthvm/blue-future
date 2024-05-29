@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.map {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 98vw;
+    height: 98vh;
+    border-radius: 2rem;
+    background-color: var(--text-color-details);
+}
