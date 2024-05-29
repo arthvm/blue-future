@@ -26,3 +26,11 @@ body {
     border-radius: 2rem;
     background-color: var(--text-color-details);
 }
+
+.hamburger-icon {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
