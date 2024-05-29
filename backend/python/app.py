@@ -28,6 +28,8 @@ def is_near_water(lat, lon, radius):
       node["natural"="water"](around:{radius},{lat},{lon});
       way["natural"="water"](around:{radius},{lat},{lon});
       relation["natural"="water"](around:{radius},{lat},{lon});
+
+      way["natural"="coastline"](around:{radius},{lat},{lon});
       
       node["water"="lake"](around:{radius},{lat},{lon});
       way["water"="lake"](around:{radius},{lat},{lon});
