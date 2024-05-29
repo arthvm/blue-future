@@ -131,4 +131,8 @@ def report():
 
 
 if __name__ == '__main__':
+    if not os.path.exists('data'):
+        os.makedirs('data')
+    if not os.path.exists(DATA_FILE):
+        save_data([])
     app.run(debug=True)
