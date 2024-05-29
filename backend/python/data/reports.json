@@ -46,13 +46,5 @@
         "lng": -46.0,
         "severity": "high",
         "user": "teste1"
-    },
-    {
-        "collected": false,
-        "description": "Algum lixo para teste",
-        "lat": -20.0,
-        "lng": -46.0,
-        "severity": "high",
-        "user": "teste1"
     }
 ]
