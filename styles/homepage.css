@@ -82,7 +82,7 @@ body {
     margin: 0;
 }
 
-.settings-sidebar {
+.sidebar-dropdown {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -93,7 +93,7 @@ body {
     background-color: var(--sidebar-widget-color);
 }
 
-.settings-sidebar-left {
+.sidebar-left {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,6 +105,6 @@ body {
     width: 1.5rem;
 }
 
-.settings-title {
+.sidebar-title {
     font-size: 1rem;
 }
