@@ -75,7 +75,7 @@ def create_map():
             continue
 
         popup_html = f"""
-        <span>Registered by: {report["user"] if not "None" else "Anonymous"}</span>
+        <span>Registered by: {"Anonymous" if report["user"] == None else report["user"]}</span>
         <ul>
             <li>Descrição: {report["description"]}</li>
             <li>Gravidade: {report["severity"]}</li>
