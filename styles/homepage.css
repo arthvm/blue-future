@@ -30,7 +30,7 @@ body {
     width: 76vw;
     height: 98vh;
     border-radius: 2rem;
-    background-color: var(--text-color-details);
+    background-color: #716047;
 }
 
 .hamburger-icon {
@@ -43,10 +43,12 @@ body {
 
 .sidebar-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
     width: 22vw;
     height: 98vh;
+    gap: 1rem;
 }
 
 .profile-sidebar {
@@ -78,4 +80,31 @@ body {
     font-size: 0.9rem;
     color: var(--text-color-details);
     margin: 0;
+}
+
+.settings-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    background-color: var(--sidebar-widget-color);
+}
+
+.settings-sidebar-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.settings-icon {
+    width: 1.5rem;
+}
+
+.settings-title {
+    font-size: 1rem;
 }
