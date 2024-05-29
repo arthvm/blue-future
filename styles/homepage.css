@@ -8,6 +8,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--text-color);
+}
+
+.homepage-main {
+    display: flex;
+    gap: 1vw;
 }
 
 .map-wrapper {
@@ -21,7 +27,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 78vw;
+    width: 76vw;
     height: 98vh;
     border-radius: 2rem;
     background-color: var(--text-color-details);
@@ -38,8 +44,38 @@ body {
 .sidebar-wrapper {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     width: 22vw;
-    height: 100vh;
-    padding: 2rem;
+    height: 98vh;
 }
 
+.profile-sidebar {
+    display: flex;
+    width: 100%;
+    border-radius: 1.5rem;
+    background-color: var(--sidebar-widget-color);
+}
+
+.profile-image {
+    display: flex;
+    width: 30%;
+    padding: 1rem;
+    border-radius: 100rem;
+}
+
+.profile-infos {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.profile-level {
+    font-size: 0.9rem;
+    color: var(--text-color-details);
+    margin: 0;
+}

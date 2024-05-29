@@ -3,6 +3,8 @@
 :root {
   --background-color: #00121F;
 
+  --sidebar-widget-color: rgba(24, 67, 78, 0.5);
+
   --primary-color: #A8F1FF;
   --secondary-color: #18434E;
   --accent-color: #54DEE8;
