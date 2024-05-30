@@ -27,8 +27,8 @@ storage = Storage(client)
 def load_data():
     try:
         reports = []
-        documents = database.list_documents(DATABASE_ID, COLLECTION_ID)
-        for document in documents:
+        response = database.list_documents(DATABASE_ID, COLLECTION_ID)
+        for document in response["documents"]:
             reports.append(document)
         return reports
     except Exception as e:
@@ -98,7 +98,6 @@ def create_map():
     marker_cluster = MarkerCluster().add_to(map)
 
     reports = load_data();
-    # print(reports)
     for report in reports:
         if report["collected"]:
             continue
