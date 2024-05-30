@@ -2,6 +2,7 @@ import os
 import folium
 from folium.plugins import MarkerCluster
 from flask import Flask, jsonify, render_template, request
+from markupsafe import Markup
 import requests
 from appwrite.id import ID
 from appwrite.client import Client
@@ -126,8 +127,8 @@ def create_map():
             )
         ).add_to(marker_cluster)
 
-    map.save("templates/map.html")
-    return render_template("map.html")
+    map_html = map._repr_html_()
+    return render_template("map.html", map=Markup(map_html))
 
 @app.route("/report", methods=['POST'])
 def report():
