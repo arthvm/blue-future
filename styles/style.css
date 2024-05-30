@@ -11,6 +11,9 @@
   --text-color: #FFFFFF;
   --text-color-details: rgba(255, 255, 255, 0.5);
 
+  --severity-low: #0C6B37;
+  --severity-medium: #F8B324;
+  --severity-high: #BC2023;
 }
 
 body {
