@@ -24,7 +24,15 @@ database = Databases(client)
 storage = Storage(client)
 
 def load_data():
-    pass
+    try:
+        reports = []
+        documents = database.list_documents(DATABASE_ID, COLLECTION_ID)
+        for document in documents:
+            reports.append(document)
+        return reports
+    except Exception as e:
+        print(f"Erro ao carregar dados do Appwrite: {e}")
+        return []
 
 def save_data(data):
     pass
