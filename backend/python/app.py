@@ -3,6 +3,7 @@ import folium
 from folium.plugins import MarkerCluster
 from flask import Flask, jsonify, render_template, request
 import requests
+from appwrite.id import ID
 from appwrite.client import Client
 from appwrite.services.databases import Databases
 from appwrite.services.storage import Storage
@@ -36,7 +37,11 @@ def load_data():
 
 def save_data(data):
     try:
-        database.create_collection(DATABASE_ID, COLLECTION_ID, document_id=None, data=data)
+        database.create_document( 
+        DATABASE_ID,
+        COLLECTION_ID,
+        document_id=ID.unique(),
+        data=data)
     except Exception as e:
         print(f"Erro ao salvar dados no Appwrite: {e}")
 
@@ -93,6 +98,7 @@ def create_map():
     marker_cluster = MarkerCluster().add_to(map)
 
     reports = load_data();
+    # print(reports)
     for report in reports:
         if report["collected"]:
             continue
