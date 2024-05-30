@@ -80,14 +80,21 @@ body {
 
 .profile-sidebar {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     border-radius: 1.5rem;
     background-color: var(--sidebar-widget-color);
 }
 
+.profile-sidebar-left {
+    display: flex;
+    flex-direction: row;
+}
+
 .profile-image {
     display: flex;
-    width: 30%;
+    width: 35%;
     padding: 1rem;
     border-radius: 100rem;
 }
@@ -107,6 +114,17 @@ body {
     font-size: 0.9rem;
     color: var(--text-color-details);
     margin: 0;
+}
+
+.settings-button {
+    all: unset;
+    display: flex;
+    padding: 1.5rem;
+    cursor: pointer;
+}
+
+.settings-icon {
+    width: 1.5rem;
 }
 
 .sidebar-dropdown {
@@ -143,12 +161,21 @@ body {
     justify-content: center;
     width: 80%;
     gap: 1rem;
-    margin-bottom: 15%;
+    margin-bottom: 14%;
 }
 
 .report-title {
     font-size: 1.5rem;
     font-weight: 600;
+    margin: 0;
+    line-height: 100%;
+}
+
+.report-divider {
+    all: unset;
+    width: 80%;
+    height: 1px;
+    background-color: var(--secondary-color);
 }
 
 .description-input {
