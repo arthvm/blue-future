@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeIcon = document.getElementById('close-icon')
     const severityDropdown = document.getElementById('severity-dropdown')
     const dropdownContent = document.getElementById('dropdown-content')
+    const rotateIcon = document.getElementById('rotate-icon')
 
     /* Remove the "ghost space" when the page is loaded */
     sidebar.classList.add('display-none')
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         dropdownContent.classList.toggle('show-dropdown-content')
         severityDropdown.classList.toggle('dropdown-active')
+        rotateIcon.classList.toggle('rotate-icon')
 
     })
 });

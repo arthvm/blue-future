@@ -215,6 +215,11 @@ body {
     width: 1.5rem;
 }
 
+.rotate-icon {
+    transform: translateY(-50%) rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
