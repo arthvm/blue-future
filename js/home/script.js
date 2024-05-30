@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const severityDropdown = document.getElementById('severity-dropdown')
     const dropdownContent = document.getElementById('dropdown-content')
     const rotateIcon = document.getElementById('rotate-icon')
+    const severityOptions = document.querySelectorAll('.dropdown-option')
 
     /* Remove the "ghost space" when the page is loaded */
     sidebar.classList.add('display-none')
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
             closeIcon.style.display = 'block'
         }, 1)
 
-    });
+    })
 
     /* When the close icon is clicked, the sidebar disappears and the map is increased to 98vw */
     closeIcon.addEventListener('click', function () {
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             sidebar.classList.add('display-none')
         }, 300)
 
-    });
+    })
 
     /* When the severity button is clicked, the dropdown content appears */
     severityDropdown.addEventListener('click', function () {
@@ -51,4 +52,26 @@ document.addEventListener('DOMContentLoaded', function () {
         rotateIcon.classList.toggle('rotate-icon')
 
     })
-});
+
+    /* Select Low, Medium and High severity, and change the button according to the option selected */
+    severityOptions.forEach(option => {
+
+        option.addEventListener('click', function (event) {
+
+            event.preventDefault()
+            const severity = this.textContent.trim()
+            severityDropdown.className = 'dropdown-button'
+            severityDropdown.classList.add(`severity-${severity.toLowerCase()}`)
+            severityDropdown.querySelector('.severity-button-left').innerHTML = `
+                <img src="./assets/severity-icon.png" alt="" class="severity-icon">
+                ${severity} Severity
+            `
+
+            dropdownContent.classList.remove('show-dropdown-content')
+            severityDropdown.classList.remove('dropdown-active')
+            rotateIcon.classList.remove('rotate-icon')
+
+        })
+
+    })
+})
