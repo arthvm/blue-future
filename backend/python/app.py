@@ -1,23 +1,33 @@
 import os
 import folium
 from folium.plugins import MarkerCluster
-from flask import Flask, json, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request
 import requests
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+from appwrite.services.storage import Storage
 
+APPWRITE_ENDPOINT = os.getenv("APPWRITE_ENDPOINT")
+APPWRITE_PROJECT_ID = os.getenv("APPWRITE_PROJECT_ID")
+APPWRITE_API_KEY = os.getenv("APPWRITE_API_KEY")
+DATABASE_ID = os.getenv("DATABASE_ID")
+COLLECTION_ID = os.getenv("COLLECTION_ID")
 
 app = Flask(__name__)
 
-DATA_FILE = 'data/reports.json'
+client = Client()
+client.set_endpoint(APPWRITE_ENDPOINT)
+client.set_project(APPWRITE_PROJECT_ID)
+client.set_key(APPWRITE_API_KEY)
+
+database = Databases(client)
+storage = Storage(client)
 
 def load_data():
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, "r", encoding="utf-8") as data_file:
-            return json.load(data_file)
-    return []
+    pass
 
 def save_data(data):
-    with open(DATA_FILE, "w") as data_file:
-        json.dump(data, data_file, indent=4)
+    pass
 
 def is_near_water(lat, lon, radius):
     overpass_url = "http://overpass-api.de/api/interpreter"
@@ -133,8 +143,4 @@ def report():
 
 
 if __name__ == '__main__':
-    if not os.path.exists('data'):
-        os.makedirs('data')
-    if not os.path.exists(DATA_FILE):
-        save_data([])
     app.run(debug=True)
