@@ -98,7 +98,8 @@ def create_map():
         location=[-23.5489, -46.6388],
         tiles='CartoDB.Voyager',
         min_zoom = 4,
-        max_bounds = True
+        max_bounds = True,
+        zoom_control = False
     )
     marker_cluster = MarkerCluster().add_to(map)
 
