@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
 body {
     display: flex;
@@ -20,6 +20,9 @@ body {
     display: flex;
     justify-content: center;
     align-content: center;
+    transition: width 0.3s ease;
+    position: relative;
+    width: 98vw;
 }
 
 .map {
@@ -27,18 +30,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 76vw;
+    width: 100%;
     height: 98vh;
     border-radius: 2rem;
     background-color: #716047;
 }
 
-.hamburger-icon {
+.hamburger-icon, .close-icon {
     position: absolute;
     top: 3rem;
     left: 3rem;
     cursor: pointer;
     color: var(--secondary-color);
+    transition: opacity 0.3s ease;
+}
+
+.close-icon {
+    display: none;
 }
 
 .sidebar-wrapper {
@@ -49,6 +57,25 @@ body {
     width: 22vw;
     height: 98vh;
     gap: 1rem;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.hidden {
+    width: 0;
+    opacity: 0;
+}
+
+.full-width {
+    width: 98vw;
+}
+
+.reduced-width {
+    width: 76vw;
+}
+
+.display-none {
+    display: none;
+    transition: all 100ms;
 }
 
 .profile-sidebar {
@@ -245,11 +272,11 @@ body {
 
 @keyframes revealDropdown {
     0% {
-      transform: scaleY(0);
-      transform-origin: top;
+        transform: scaleY(0);
+        transform-origin: top;
     }
     100% {
-      transform: scaleY(1);
-      transform-origin: top;
+        transform: scaleY(1);
+        transform-origin: top;
     }
-  }
+}

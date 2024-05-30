@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/homepage.css">
     <script src="https://kit.fontawesome.com/a5cb30fd77.js" crossorigin="anonymous"></script>
+    <script src="./js/home/script.js"></script>
     <title>Blue Future</title>
 </head>
 <body>
 
     <main class="homepage-main">
 
-        <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper hidden" id="sidebar">
+
+            <i class="fa-solid fa-xmark fa-2xl close-icon" id="close-icon"></i>
 
             <div class="sidebar-report">
                 <p class="report-title">Report Trash</p>
@@ -47,20 +50,19 @@
                 <img src="./assets/default-profile.webp" alt="" class="profile-image">
 
                 <div class="profile-infos">
-                    <h1 class="profile-name">Guilherme Maggiorini</h1>
+                    <h1 class="profile-name">Guilherme</h1>
                     <p class="profile-level">Level 5</p>
                 </div>
             </div>
 
         </div>
     
-        <div class="map-wrapper">
+        <div class="map-wrapper full-width" id="map-wrapper">
     
-            <i class="fa-solid fa-bars-staggered fa-2xl hamburger-icon"></i>
+            <i class="fa-solid fa-bars-staggered fa-2xl hamburger-icon" id="hamburger-icon"></i>
     
             <!-- COLOCAR IFRAME AQUI -->
             <iframe src="" class="map"></iframe>
-            
     
         </div>
 
