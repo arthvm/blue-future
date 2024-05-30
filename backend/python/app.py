@@ -94,7 +94,12 @@ def is_near_water(lat, lon, radius):
 
 @app.route("/map")
 def create_map():
-    map = folium.Map(location=[-23.5489, -46.6388], tiles='CartoDB.Voyager')
+    map = folium.Map(
+        location=[-23.5489, -46.6388],
+        tiles='CartoDB.Voyager',
+        min_zoom = 4,
+        max_bounds = True
+    )
     marker_cluster = MarkerCluster().add_to(map)
 
     reports = load_data();
