@@ -35,7 +35,10 @@ def load_data():
         return []
 
 def save_data(data):
-    pass
+    try:
+        database.create_collection(DATABASE_ID, COLLECTION_ID, document_id=None, data=data)
+    except Exception as e:
+        print(f"Erro ao salvar dados no Appwrite: {e}")
 
 def is_near_water(lat, lon, radius):
     overpass_url = "http://overpass-api.de/api/interpreter"
@@ -133,9 +136,7 @@ def report():
     if not is_near_water(lat,lng,100): #USAR VARIAVEL NO FUTURO
          return jsonify({"error": f"Can't report outside the surroundings of water body"}), 400
 
-    reports = load_data()
-
-    reports.append(
+    report = (
         {
             "lat": lat,
             "lng": lng,
@@ -146,7 +147,7 @@ def report():
         }
     )
     
-    save_data(reports)
+    save_data(report)
     return jsonify({"message": f"JSON file was received succesfuly"}), 200
 
 
