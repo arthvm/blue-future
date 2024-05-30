@@ -243,14 +243,32 @@ body {
 }
 
 .severity-low {
+    background-color: var(--severity-low-opacity);
+    border: 2px solid var(--severity-low);
+    transition: all 100ms;
+}
+
+.severity-low:hover {
     background-color: var(--severity-low);
 }
 
 .severity-medium {
+    background-color: var(--severity-medium-opacity);
+    border: 2px solid var(--severity-medium);
+    transition: all 100ms;
+}
+
+.severity-medium:hover {
     background-color: var(--severity-medium);
 }
 
 .severity-high {
+    background-color: var(--severity-high-opacity);
+    border: 2px solid var(--severity-high);
+    transition: all 100ms;
+}
+
+.severity-high:hover {
     background-color: var(--severity-high);
 }
 
