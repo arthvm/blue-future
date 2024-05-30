@@ -33,7 +33,7 @@ body {
     width: 100%;
     height: 98vh;
     border-radius: 2rem;
-    background-color: #716047;
+    background-color: var(--sidebar-widget-color);
 }
 
 .hamburger-icon, .close-icon {
