@@ -187,6 +187,7 @@ body {
     padding: 1rem;
     border-radius: 0.8rem;
     transition: all 100ms;
+    cursor: pointer;
     background-color: var(--sidebar-widget-color);
 }
 
@@ -211,6 +212,17 @@ body {
     width: calc(80% + 2rem);
     padding: 2rem 1rem 1rem 1rem;
     gap: 1rem;
+    background-color: var(--secondary-color);
+}
+
+.show-dropdown-content {
+    display: flex;
+    border-radius: 0 0 0.8rem 0.8rem;
+    animation: revealDropdown 0.4s ease;
+}
+
+.dropdown-active {
+    border-radius: 0.8rem 0.8rem 0 0;
     background-color: var(--secondary-color);
 }
 
@@ -240,17 +252,6 @@ body {
 
 .severity-high {
     background-color: var(--severity-high);
-}
-
-.dropdown-severity:hover .dropdown-content {
-    display: flex;
-    border-radius: 0 0 0.8rem 0.8rem;
-    animation: revealDropdown 0.4s ease;
-}
-
-.dropdown-severity:hover .dropdown-button {
-    border-radius: 0.8rem 0.8rem 0 0;
-    background-color: var(--secondary-color);
 }
 
 .send-button {

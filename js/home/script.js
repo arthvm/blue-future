@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const mapWrapper = document.getElementById('map-wrapper')
     const hamburgerIcon = document.getElementById('hamburger-icon')
     const closeIcon = document.getElementById('close-icon')
+    const severityDropdown = document.getElementById('severity-dropdown')
+    const dropdownContent = document.getElementById('dropdown-content')
 
     /* Remove the "ghost space" when the page is loaded */
     sidebar.classList.add('display-none')
@@ -39,4 +41,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 300)
 
     });
+
+    /* When the severity button is clicked, the dropdown content appears */
+    severityDropdown.addEventListener('click', function () {
+
+        dropdownContent.classList.toggle('show-dropdown-content')
+        severityDropdown.classList.toggle('dropdown-active')
+
+    })
 });
