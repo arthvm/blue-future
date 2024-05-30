@@ -277,16 +277,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
     padding: 0.8rem 1rem;
-    font-size: 1.2rem;
-    border-radius: 0.6rem;
-    background-color: var(--primary-color);
-    color: black;
+    font-size: 1rem;
+    border-radius: 1rem;
+    transition: all 100ms;
+    cursor: pointer;
+    background-color: var(--sidebar-widget-color);
+    border: 1px solid var(--primary-color);
+}
+
+.send-button:hover {
+    background-color: var(--secondary-color);
 }
 
 .send-icon {
-    width: 1.2rem;
+    width: 1rem;
 }
 
 @keyframes revealDropdown {
