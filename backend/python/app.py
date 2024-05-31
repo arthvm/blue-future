@@ -92,7 +92,7 @@ def is_near_water(lat, lon, radius):
     
     return True
 
-@app.route("/map")
+@app.route("/")
 def create_map():
     map = folium.Map(
         location=[-23.5489, -46.6388],
@@ -132,10 +132,7 @@ def create_map():
             )
         ).add_to(marker_cluster)
 
-    map_html = map.get_root().render()
-    with open("templates/map.html", "w") as file:
-        file.write(map_html)
-    return map_html
+    return map.get_root().render()
 
 @app.route("/report", methods=['POST'])
 def report():
