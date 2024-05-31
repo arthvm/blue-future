@@ -1,4 +1,5 @@
 import os
+from flask_cors import CORS
 import folium
 from folium.plugins import MarkerCluster
 from flask import Flask, jsonify, render_template, request
@@ -15,6 +16,7 @@ DATABASE_ID = os.getenv("DATABASE_ID")
 COLLECTION_ID = os.getenv("COLLECTION_ID")
 
 app = Flask(__name__)
+CORS(app)
 
 client = Client()
 client.set_endpoint(APPWRITE_ENDPOINT)
