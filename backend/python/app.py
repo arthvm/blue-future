@@ -16,11 +16,7 @@ DATABASE_ID = os.getenv("DATABASE_ID")
 COLLECTION_ID = os.getenv("COLLECTION_ID")
 
 app = Flask(__name__)
-CORS(app, resources={
-        r"/report": {
-            "methods": ["POST"]
-        }
-    })
+CORS(app)
 
 client = Client()
 client.set_endpoint(APPWRITE_ENDPOINT)
