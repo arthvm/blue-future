@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* When the hamburger icon is clicked, the sidebar appears and the map is reduced to 76vw */
     hamburgerIcon.addEventListener('click', function () {
-        
         sidebar.classList.remove('display-none')
 
         /* This timeout is used to prevent all those functions loading with the "display-none" class removal */
@@ -32,12 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
             hamburgerIcon.style.display = 'none'
             closeIcon.style.display = 'block'
         }, 1)
-
     })
 
     /* When the close icon is clicked, the sidebar disappears and the map is increased to 98vw */
     closeIcon.addEventListener('click', function () {
-
         sidebar.classList.add('hidden')
         mapWrapper.classList.add('full-width')
         mapWrapper.classList.remove('reduced-width')
@@ -48,23 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             sidebar.classList.add('display-none')
         }, 300)
-
     })
 
     /* When the severity button is clicked, the dropdown content appears */
     severityDropdown.addEventListener('click', function () {
-        
         dropdownContent.classList.toggle('show-dropdown-content')
         severityDropdown.classList.toggle('dropdown-active')
         rotateIcon.classList.toggle('rotate-icon')
-
     })
 
     /* Select Low, Medium and High severity, and change the button according to the option selected */
     severityOptions.forEach(option => {
-
         option.addEventListener('click', function (event) {
-
             event.preventDefault()
             const severity = this.textContent.trim()
             severityDropdown.className = 'dropdown-button'
@@ -76,16 +68,12 @@ document.addEventListener('DOMContentLoaded', function () {
             dropdownContent.classList.remove('show-dropdown-content')
             severityDropdown.classList.remove('dropdown-active')
             rotateIcon.classList.remove('rotate-icon')
-
         })
-        
     })
 
     /* When the chatbot dropdown is clicked, toggle the chatbot content and hide the sidebar report */
     chatbotButton.addEventListener('click', function () {
-
         if (chatbotContent.classList.contains('show-chatbot-content')) {
-
             chatbotContent.classList.remove('show-chatbot-content')
 
             /* This timeout is used to ensure the report container appears after the chatbot container closes */
@@ -93,23 +81,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 chatbotContent.style.display = 'none'
                 sidebarReport.classList.remove('hidden-sidebar-report')
             }, 400)
-
         } else {
-
             chatbotContent.style.display = 'flex'
 
             /* This timeout is used to ensure the animation loads after the chatbot container appears */
             setTimeout(() => {
                 chatbotContent.classList.add('show-chatbot-content')
             }, 1)
-
             sidebarReport.classList.add('hidden-sidebar-report')
-
         }
 
         chatbotButton.classList.toggle('chatbot-active')
         chatbotDropdownIcon.classList.toggle('rotate-icon')
 
     })
-
 })
