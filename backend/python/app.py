@@ -1,23 +1,49 @@
 import os
 import folium
 from folium.plugins import MarkerCluster
-from flask import Flask, json, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request
 import requests
+from appwrite.id import ID
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+from appwrite.services.storage import Storage
 
+APPWRITE_ENDPOINT = os.getenv("APPWRITE_ENDPOINT")
+APPWRITE_PROJECT_ID = os.getenv("APPWRITE_PROJECT_ID")
+APPWRITE_API_KEY = os.getenv("APPWRITE_API_KEY")
+DATABASE_ID = os.getenv("DATABASE_ID")
+COLLECTION_ID = os.getenv("COLLECTION_ID")
 
 app = Flask(__name__)
 
-DATA_FILE = 'data/reports.json'
+client = Client()
+client.set_endpoint(APPWRITE_ENDPOINT)
+client.set_project(APPWRITE_PROJECT_ID)
+client.set_key(APPWRITE_API_KEY)
+
+database = Databases(client)
+storage = Storage(client)
 
 def load_data():
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, "r", encoding="utf-8") as data_file:
-            return json.load(data_file)
-    return []
+    try:
+        reports = []
+        response = database.list_documents(DATABASE_ID, COLLECTION_ID)
+        for document in response["documents"]:
+            reports.append(document)
+        return reports
+    except Exception as e:
+        print(f"Erro ao carregar dados do Appwrite: {e}")
+        return []
 
 def save_data(data):
-    with open(DATA_FILE, "w") as data_file:
-        json.dump(data, data_file, indent=4)
+    try:
+        database.create_document( 
+        DATABASE_ID,
+        COLLECTION_ID,
+        document_id=ID.unique(),
+        data=data)
+    except Exception as e:
+        print(f"Erro ao salvar dados no Appwrite: {e}")
 
 def is_near_water(lat, lon, radius):
     overpass_url = "http://overpass-api.de/api/interpreter"
@@ -66,9 +92,15 @@ def is_near_water(lat, lon, radius):
     
     return True
 
-@app.route("/map")
+@app.route("/")
 def create_map():
-    map = folium.Map(location=[-23.5489, -46.6388], tiles='CartoDB.Voyager')
+    map = folium.Map(
+        location=[-23.5489, -46.6388],
+        tiles='CartoDB.Voyager',
+        min_zoom = 4,
+        max_bounds = True,
+        zoom_control = False
+    )
     marker_cluster = MarkerCluster().add_to(map)
 
     reports = load_data();
@@ -100,8 +132,7 @@ def create_map():
             )
         ).add_to(marker_cluster)
 
-    map.save("templates/map.html")
-    return render_template("map.html")
+    return map.get_root().render()
 
 @app.route("/report", methods=['POST'])
 def report():
@@ -115,9 +146,7 @@ def report():
     if not is_near_water(lat,lng,100): #USAR VARIAVEL NO FUTURO
          return jsonify({"error": f"Can't report outside the surroundings of water body"}), 400
 
-    reports = load_data()
-
-    reports.append(
+    report = (
         {
             "lat": lat,
             "lng": lng,
@@ -128,13 +157,9 @@ def report():
         }
     )
     
-    save_data(reports)
+    save_data(report)
     return jsonify({"message": f"JSON file was received succesfuly"}), 200
 
 
 if __name__ == '__main__':
-    if not os.path.exists('data'):
-        os.makedirs('data')
-    if not os.path.exists(DATA_FILE):
-        save_data([])
     app.run(debug=True)
