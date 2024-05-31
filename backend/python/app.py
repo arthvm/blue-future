@@ -18,7 +18,6 @@ COLLECTION_ID = os.getenv("COLLECTION_ID")
 app = Flask(__name__)
 CORS(app, resources={
         r"/report": {
-            "origins": "https://127.0.0.1:5500",
             "methods": ["POST"]
         }
     })
