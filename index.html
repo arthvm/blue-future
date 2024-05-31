@@ -17,7 +17,7 @@
 
         <div class="sidebar-wrapper hidden" id="sidebar">
 
-            <i class="fa-solid fa-xmark fa-2xl close-icon" id="close-icon"></i>
+            
 
             <div class="sidebar-report">
                 <h1 class="report-title">Report Trash</h1>
@@ -40,12 +40,17 @@
                 <button class="send-button">Submit <img src="./assets/send-icon.png" alt="" class="send-icon"></button>
             </div>
 
-            <div class="sidebar-dropdown ngo-sidebar">
-                <div class="sidebar-left">
-                    <img src="./assets/chatbot-icon.png" alt="" class="sidebar-icon globe-icon">
-                    <p class="sidebar-title">Talk with our ChatBot</p>
+            <div class="chatbot-wrapper">
+                <button class="sidebar-dropdown chatbot-dropdown" id="chatbot-button">
+                    <span class="sidebar-left">
+                        <img src="./assets/chatbot-icon.png" alt="" class="sidebar-icon globe-icon">
+                        <p class="sidebar-title">ChatBot</p>
+                    </span>
+                    <i class="fa-solid fa-angle-up fa-xl" id="chatbot-dropdown-icon"></i>
+                </button>
+                <div class="chatbot-content" id="chatbot-content">
+                    <iframe src="https://autoinsight-bot.vercel.app/blue-future-bqiq6kw" class="chatbot-iframe" title="ChatBot widget"></iframe>
                 </div>
-                <i class="fa-solid fa-angle-up fa-xl"></i>
             </div>
 
             <div class="profile-sidebar">
@@ -69,8 +74,9 @@
         <div class="map-wrapper full-width" id="map-wrapper">
     
             <i class="fa-solid fa-bars-staggered fa-2xl hamburger-icon" id="hamburger-icon"></i>
+            <i class="fa-solid fa-xmark fa-2xl close-icon" id="close-icon"></i>
     
-            <iframe src="https://bluefuture-trashmap.onrender.com/map" class="map"></iframe>
+            <iframe src="https://bluefuture-trashmap.onrender.com/map" class="map" title="Map widget"></iframe>
     
         </div>
 
