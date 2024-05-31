@@ -1,4 +1,4 @@
-package br.com.bluefuture;
+package br.com.bluefuture.bean;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -7,8 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Account {
-    private static final List<Account> registeredAccounts = new ArrayList<>();
-
     private String userName;
     private String name;
     private String email;
@@ -18,6 +16,19 @@ public class Account {
 
     public String getUserName() {
         return userName;
+    }
+
+    public void setUserName(String userName) {
+        if(userName == null) throw new IllegalArgumentException("Username can't be empty");
+
+        String userNameRegex = "^[a-zA-Z0-9_.-]{3,}$";
+        Pattern pattern = Pattern.compile(userNameRegex);
+        Matcher matcher = pattern.matcher(userName);
+
+        if(!matcher.matches()) throw new IllegalArgumentException("Username must be at least 3 characters long and may " +
+                "contain letters, digits, underscores, hyphens, and periods.");
+
+        this.userName = userName;
     }
 
     public String getName() {
@@ -66,46 +77,4 @@ public class Account {
         this.password = password;
     }
 
-    public static Account login(String userName, String password){
-        if (userName == null) throw new InvalidParameterException("Username can't be empty");
-        if (password == null) throw new InvalidParameterException("Password can't be empty");
-
-        Account loginAccount = null;
-
-        for (Account registeredAccount : registeredAccounts) {
-            if (registeredAccount.getUserName().equals(userName)){
-                loginAccount = registeredAccount;
-                break;
-            }
-        }
-
-        if(loginAccount == null) throw new InvalidParameterException("Account '" + userName + "' is not registered");
-
-        if(!loginAccount.password.equals(password)) throw new InvalidParameterException("Wrong password!");
-
-        return loginAccount;
-    }
-
-    public void register(String userName, String password){
-        if (userName == null) throw new InvalidParameterException("Username can't be empty");
-        if (password == null) throw new InvalidParameterException("Password can't be empty");
-
-        for(Account registeredAccount: registeredAccounts){
-            if(registeredAccount.getUserName().equals(userName)){
-                throw new IllegalArgumentException("User already exists");
-            }
-        }
-
-        String userNameRegex = "^[a-zA-Z0-9_.-]{3,}$";
-        Pattern pattern = Pattern.compile(userNameRegex);
-        Matcher matcher = pattern.matcher(userName);
-
-        if(!matcher.matches()) throw new IllegalArgumentException("Username must be at least 3 characters long and may " +
-                "contain letters, digits, underscores, hyphens, and periods.");
-
-        setPassword(password);
-        this.userName = userName;
-
-        registeredAccounts.add(this);
-    }
 }
