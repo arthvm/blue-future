@@ -6,14 +6,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Organization extends Account{
     private String location;
-    private List<Alert> alerts;
-    private List<Event> events;
+    private final List<Alert> alerts = new ArrayList<>();
+    private final List<Event> events = new ArrayList<>();
 
     public Organization() {
     }
