@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatbotContent = document.getElementById('chatbot-content')
     const sidebarReport = document.querySelector('.sidebar-report')
     const chatbotDropdownIcon = document.getElementById('chatbot-dropdown-icon')
+    const sendReportButton = document.getElementById('send-report')
+    const descriptionInput = document.getElementById('description')
+    const selectedSeverity = document.getElementById('selected-severity')
+    const iframeMap = document.getElementById('iframe-map')
+    const checkboxCollected = document.getElementById('collected')
 
     /* Remove the "ghost space" when the page is loaded */
     sidebar.classList.add('display-none')
@@ -49,9 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* When the severity button is clicked, the dropdown content appears */
     severityDropdown.addEventListener('click', function () {
-        dropdownContent.classList.toggle('show-dropdown-content')
-        severityDropdown.classList.toggle('dropdown-active')
-        rotateIcon.classList.toggle('rotate-icon')
+            if (severityDropdown.classList.contains('not-allowed-cursor')) {
+                return
+            } else {
+                dropdownContent.classList.toggle('show-dropdown-content')
+                severityDropdown.classList.toggle('dropdown-active')
+                rotateIcon.classList.toggle('rotate-icon')
+            }
     })
 
     /* Select Low, Medium and High severity, and change the button according to the option selected */
@@ -61,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const severity = this.textContent.trim()
             severityDropdown.className = 'dropdown-button'
             severityDropdown.classList.add(`severity-${severity.toLowerCase()}`)
-            severityDropdown.querySelector('.severity-button-left').innerHTML = `
+            selectedSeverity.innerHTML = `
                 <img src="./assets/severity-icon.png" alt="" class="severity-icon">
                 ${severity} Severity
             `
@@ -90,9 +99,119 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 1)
             sidebarReport.classList.add('hidden-sidebar-report')
         }
-
         chatbotButton.classList.toggle('chatbot-active')
         chatbotDropdownIcon.classList.toggle('rotate-icon')
-
     })
+
+    /* When the send report button is clicked, send the report to the map endpoint */
+    sendReportButton.addEventListener('click', function () {
+        const description = descriptionInput.value.trim()
+        const severity = selectedSeverity.textContent.trim().split(' ')[0].toLowerCase()
+
+        /* If the description is empty or the severity is not selected, alert the user and do not send the request */
+        if (description === '' || severity === 'Severity') {
+            alert('Please provide a description and select a severity level before submitting.')
+            return
+        }
+
+        blockReportButton()
+
+        function sendReport(position) {
+            const lat = position.coords.latitude
+            const lng = position.coords.longitude
+            const trashCollected = checkboxCollected.checked
+
+            /* JSON data to be sent to the map endpoint */
+            const reportData = {
+                user: 'Anonymous',
+                description: description,
+                severity: severity,
+                collected: trashCollected,
+                lat: lat,
+                lng: lng
+            }
+
+            /* Send the report to the map endpoint via POST request */
+            fetch('https://bluefuture-trashmap.onrender.com/report', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*',
+                    'Accept-Encoding': 'gzip, deflate, br',
+                    'Connection': 'keep-alive'
+                },
+                body: JSON.stringify(reportData)
+            }).then(response => {
+                if (response.status === 200) {
+                    blockReportForm()
+                } else if (response.status === 400) {
+                    alert('Your report could not be sent because you are not in the water.')
+                    unblockReportButton()
+                } else {
+                    alert('An error occurred while sending your report. Please try again later.')
+                    unblockReportButton()
+                }
+            })
+        }
+
+        /* Show an error message if the user denies the location permission or an unknown error occurs */
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert('User denied the permission for the device location.')
+                    unblockReportButton()
+                    break
+                case error.POSITION_UNAVAILABLE:
+                    alert('Location information is unavailable.')
+                    unblockReportButton()
+                    break
+                case error.TIMEOUT:
+                    alert('The request to get user location timed out.')
+                    unblockReportButton()
+                    break
+                case error.UNKNOWN_ERROR:
+                    alert('An unknown error occurred.')
+                    unblockReportButton()
+                    break
+            }
+        }
+
+        /* Get the user's location */
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(sendReport, showError)
+            } else {
+                alert('Geolocation is not supported by your browser')
+            }
+        }
+
+        getLocation()
+    })
+
+    /* Block the report form and change the submit button style after the report is sent */
+    function blockReportForm() {
+        sendReportButton.classList.add('button-report-sent')
+        sendReportButton.classList.remove('send-button')
+        sendReportButton.classList.add('not-allowed-cursor')
+        descriptionInput.classList.add('not-allowed-cursor')
+        severityDropdown.classList.add('not-allowed-cursor')
+        checkboxCollected.classList.add('not-allowed-cursor')
+        sendReportButton.innerHTML = `Report Sent <img src="./assets/report-sent.png" alt="" class="send-icon">`
+        descriptionInput.disabled = true
+        severityDropdown.disabled = true
+        checkboxCollected.disabled = true
+        iframeMap.src = iframeMap.src
+    }
+
+    /* Block the report button when the report is being sent to prevent spam POST requests */
+    function blockReportButton() {
+        sendReportButton.classList.add('not-allowed-cursor')
+        sendReportButton.disabled = true
+    }
+
+    /* Unblock the report button when the report is not sent to allow the user send it again */
+    function unblockReportButton() {
+        sendReportButton.classList.remove('not-allowed-cursor')
+        sendReportButton.disabled = false
+    }
 })
