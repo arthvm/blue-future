@@ -37,17 +37,18 @@ body {
     background-color: var(--sidebar-widget-color);
 }
 
-.close-icon {
-    display: none;
-}
 
 .hamburger-icon, .close-icon {
     position: absolute;
-    top: 3rem;
-    left: 3rem;
+    top: 2rem;
+    left: 1.5rem;
     cursor: pointer;
     color: var(--secondary-color);
     transition: opacity 0.3s ease;
+}
+
+.close-icon {
+    color: var(--primary-color);
 }
 
 /* Sidebar styling */
@@ -415,7 +416,7 @@ input[id="collected"]:checked {
 }
 
 .show-chatbot-content {
-    height: 70vh;
+    height: 65vh;
     opacity: 1;
 }
 
