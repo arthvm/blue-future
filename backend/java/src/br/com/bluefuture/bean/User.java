@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User extends Account{
+    private int trashReported;
+    private int trashCollected;
     private int level;
     private int xp;
     private static final int XP_PER_LEVEL = 100;
@@ -12,6 +14,14 @@ public class User extends Account{
     private Organization association;
 
     public User() {}
+
+    public int getTrashReported() {
+        return trashReported;
+    }
+
+    public int getTrashCollected() {
+        return trashCollected;
+    }
 
     public int getLevel() {
         return level;
@@ -35,6 +45,20 @@ public class User extends Account{
 
     public void setAssociation(Organization association) {
         this.association = association;
+    }
+
+    public void reportTrash(String location, int severity, boolean wasCollected){
+        if (location == null) throw new IllegalArgumentException("Location can't be empty");
+        if (severity < 0 || severity > 2) throw new IllegalArgumentException("Severity can't be less than " +
+                "0 or more than 2");
+
+        if (wasCollected){
+            increaseXP(5 * (severity + 1));
+            trashCollected++;
+        }
+
+        increaseXP(10);
+        trashReported++;
     }
 
     public void addAchievement(Achievement achievement){
