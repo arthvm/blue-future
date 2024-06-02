@@ -432,6 +432,57 @@ input[id="collected"]:checked {
     transition: opacity 0.4s ease;
 }
 
+/* Alert popup styling */
+.alert-popup {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    flex-direction: row;
+    opacity: 0;
+    bottom: 0;
+    left: 1rem;
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: 1.5rem;
+    transform: translateY(100%);
+    background-color: var(--alert-popup-background);
+    border: 3px solid var(--alert-popup);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.alert-image {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.alert-column {
+    flex-direction: column;
+}
+
+.alert-title {
+    color: var(--alert-popup-text);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.alert-description {
+    color: var(--alert-popup-text);
+    font-size: 1rem;
+    font-weight: 100;
+    margin-top: 0.25rem;
+}
+
+.show-popup {
+    display: flex;
+    opacity: 1;
+    transform: translateY(-1rem);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.remove-popup {
+    display: none;
+}
+
 /* Animations */
 @keyframes revealDropdown {
     0% {
@@ -441,5 +492,24 @@ input[id="collected"]:checked {
     100% {
         transform: scaleY(1);
         transform-origin: top;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    80% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
     }
 }

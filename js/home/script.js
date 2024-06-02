@@ -17,12 +17,38 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectedSeverity = document.getElementById('selected-severity')
     const iframeMap = document.getElementById('iframe-map')
     const checkboxCollected = document.getElementById('collected')
+    const alertPopup = document.getElementById('alert-popup')
+    const alertTitle = document.getElementById('alert-title')
+    const alertDescription = document.getElementById('alert-description')
 
     /* Remove the "ghost space" when the page is loaded */
     sidebar.classList.add('display-none')
 
     /* Ensuring the close sidebar icon doesn't show when the page is loaded */
     closeIcon.style.display = 'none'
+
+    /* Function to show an alert pop up on the screen, replacing the default alert box */
+    function showAlert(title, description) {
+        alertTitle.textContent = title
+        alertDescription.textContent = description
+
+        alertPopup.classList.remove('remove-popup')
+
+        /* This timeout is used to ensure the animation loads when the alert pop up appears */
+        setTimeout(() => {
+            alertPopup.classList.add('show-popup')
+        }, 1)
+
+        /* This timeout is used to remove the alert pop up after 10 seconds */
+        setTimeout(() => {
+            alertPopup.classList.remove('show-popup')
+
+            /* This timeout is used to remove the alert pop up after the animation ends to prevent the "ghost space" */
+            setTimeout(() => {
+                alertPopup.classList.add('remove-popup')
+            }, 501)
+        }, 10000)
+    }
 
     /* When the hamburger icon is clicked, the sidebar appears and the map is reduced to 76vw */
     hamburgerIcon.addEventListener('click', function () {
@@ -110,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         /* If the description is empty or the severity is not selected, alert the user and do not send the request */
         if (description === '' || severity === 'Severity') {
-            alert('Please provide a description and select a severity level before submitting.')
+            showAlert('Missing fields', 'Please provide a description and select a severity level before submitting.')
             return
         }
 
@@ -145,10 +171,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.status === 200) {
                     blockReportForm()
                 } else if (response.status === 400) {
-                    alert('Your report could not be sent because you are not in the water.')
+                    showAlert('Position error', 'Your report could not be sent because you are not in the water.')
                     unblockReportButton()
                 } else {
-                    alert('An error occurred while sending your report. Please try again later.')
+                    showAlert('Unknown error', 'An error occurred while sending your report. Please try again later.')
                     unblockReportButton()
                 }
             })
@@ -158,19 +184,19 @@ document.addEventListener('DOMContentLoaded', function () {
         function showError(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
-                    alert('User denied the permission for the device location.')
+                    showAlert('Permission error', 'User denied the permission for the device location.')
                     unblockReportButton()
                     break
                 case error.POSITION_UNAVAILABLE:
-                    alert('Location information is unavailable.')
+                    showAlert('Position error', 'Location information is unavailable.')
                     unblockReportButton()
                     break
                 case error.TIMEOUT:
-                    alert('The request to get user location timed out.')
+                    showAlert('Timed out', 'The request to get user location timed out.')
                     unblockReportButton()
                     break
                 case error.UNKNOWN_ERROR:
-                    alert('An unknown error occurred.')
+                    showAlert('Unknown error', 'An unknown error occurred.')
                     unblockReportButton()
                     break
             }
@@ -181,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(sendReport, showError)
             } else {
-                alert('Geolocation is not supported by your browser')
+                showAlert('Device error', 'Geolocation is not supported by your browser')
             }
         }
 

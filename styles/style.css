@@ -18,6 +18,10 @@
   --severity-medium-opacity: rgba(248, 179, 36, 0.5);
   --severity-high: #BC2023;
   --severity-high-opacity: rgba(188, 32, 35, 0.5);
+
+  --alert-popup-background: #ffe5e6;
+  --alert-popup: #ed524d;
+  --alert-popup-text: #494745;
 }
 
 body {
