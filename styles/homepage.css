@@ -183,6 +183,15 @@ body {
     color: var(--text-color-details);
 }
 
+.dropdown-tooltip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    gap: 2rem;
+}
+
 .dropdown-severity {
     display: flex;
     flex-direction: column;
@@ -296,6 +305,62 @@ body {
 
 .severity-high:hover {
     background-color: var(--severity-high);
+}
+
+.tooltip-button {
+    all: unset;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: help;
+    position: relative;
+}
+
+.tooltip-icon {
+    width: 1.5rem;
+}
+
+.tooltip-popup {
+    display: none;
+    position: absolute;
+    padding: 1rem;
+    border-radius: 0 1.5rem 1.5rem 1.5rem;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    z-index: 3;
+}
+
+.tooltip-popup::before {
+    content: '';
+    position: absolute;
+    top: -0.55rem;
+    left: 0;
+    border-width: 0 0.6rem 0.6rem 0.6rem;
+    border-style: solid;
+    border-color: transparent transparent var(--secondary-color) transparent;
+}
+
+.tooltip-description {
+    margin: 0.5rem;
+    color: var(--text-color-details);
+}
+
+.severity-tooltip:hover .tooltip-popup {
+    display: block;
+}
+
+.tdesc-low {
+    font-weight: 600;
+    color: var(--severity-low);
+}
+
+.tdesc-medium {
+    font-weight: 600;
+    color: var(--severity-medium);
+}
+
+.tdesc-high {
+    font-weight: 600;
+    color: var(--severity-high);
 }
 
 .collected-wrapper {
