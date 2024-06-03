@@ -7,29 +7,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Account {
-    private String userName;
     private String name;
     private String email;
     private String password;
 
     public Account() {}
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        if(userName == null) throw new IllegalArgumentException("Username can't be empty");
-
-        String userNameRegex = "^[a-zA-Z0-9_.-]{3,}$";
-        Pattern pattern = Pattern.compile(userNameRegex);
-        Matcher matcher = pattern.matcher(userName);
-
-        if(!matcher.matches()) throw new IllegalArgumentException("Username must be at least 3 characters long and may " +
-                "contain letters, digits, underscores, hyphens, and periods.");
-
-        this.userName = userName;
-    }
 
     public String getName() {
         return name;
@@ -77,4 +59,7 @@ public class Account {
         this.password = password;
     }
 
+    public String getPassword() {
+        return password;
+    }
 }
