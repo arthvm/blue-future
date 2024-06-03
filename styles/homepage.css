@@ -99,6 +99,7 @@ body {
 .profile-image {
     display: flex;
     width: 35%;
+    max-width: 12rem;
     padding: 1rem;
     border-radius: 100rem;
 }
@@ -435,7 +436,7 @@ input[id="collected"]:checked {
 
 /* Alert popup styling */
 .alert-popup {
-    display: none;
+    display: flex;
     position: absolute;
     align-items: center;
     flex-direction: row;

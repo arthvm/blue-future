@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* Remove the "ghost space" when the page is loaded */
     sidebar.classList.add('display-none')
-
+    alertPopup.classList.add('remove-popup')
+    
     /* Ensuring the close sidebar icon doesn't show when the page is loaded */
     closeIcon.style.display = 'none'
 
