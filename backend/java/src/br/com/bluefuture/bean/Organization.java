@@ -83,16 +83,13 @@ public class Organization extends Account{
         this.alerts.remove(alert);
     }
 
-    public void createEvent(String eventName, String description, LocalDateTime eventDateTime){
+    public void createEvent(String eventName, String description, LocalDateTime eventDateTime, String location){
         if (eventName == null) throw new IllegalArgumentException("Event name can't be null");
         if (description == null) throw new IllegalArgumentException("Event description can't be null");
         if (eventDateTime == null) throw new IllegalArgumentException("Event date and time can't be null");
 
-        Event event = new Event();
         try{
-            event.setName(eventName);
-            event.setDescription(description);
-            event.setDateTime(eventDateTime);
+            Event event = new Event(eventName, description, eventDateTime, location, this);
 
             this.events.add(event);
             EventManager.addEvent(this, event);

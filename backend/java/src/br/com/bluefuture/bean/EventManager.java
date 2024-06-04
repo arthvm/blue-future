@@ -34,9 +34,9 @@ public class EventManager {
 
             for(Event orgEvent: orgEvents){
                 System.out.println(index + "." + orgEvent);
+                index++;
             }
 
-            index++;
             allEvents.addAll(orgEvents);
         }
 

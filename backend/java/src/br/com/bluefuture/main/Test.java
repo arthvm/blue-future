@@ -2,6 +2,9 @@ package br.com.bluefuture.main;
 
 import br.com.bluefuture.bean.*;
 
+import java.sql.SQLOutput;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -260,7 +263,7 @@ public class Test {
                         List<Event> allEvents = EventManager.getEvents();
                         if(!allEvents.isEmpty()){
                             System.out.print(">> ");
-                            int eventIndex = scanner.nextInt();
+                            int eventIndex = scanner.nextInt() - 1;
                             user.joinEvent(allEvents.get(eventIndex));
 
                             System.out.println("Voce se inscreveu para o evento: " + allEvents.get(eventIndex));
@@ -367,10 +370,42 @@ public class Test {
                         }
                     }
                     case 2 -> {
+                        System.out.print("Escolha um nome para o seu evento:\n>> ");
+                        String name = scanner.nextLine();
 
+                        System.out.print("De uma breve descricao do evento\n>> ");
+                        String description = scanner.nextLine();
+
+                        StringBuilder dateTime = new StringBuilder();
+                        System.out.print("Qual a data do seu evento? (dd/MM/aaaa)\n>> ");
+                        dateTime.append(scanner.nextLine()).append(" --- ");
+                        System.out.print("Qual o horario do seu evento? (HH:mm)\n>> ");
+                        dateTime.append(scanner.nextLine());
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy --- HH:mm");
+                        LocalDateTime eventDateTime = LocalDateTime.parse(dateTime.toString(),formatter);
+
+                        System.out.print("Onde o evento sera realizado?\n>> ");
+                        String location = scanner.nextLine();
+
+                        System.out.println("Tem certeza de que deseja criar o evento? (Eventos criados nao podem ser cancelados) n/Y");
+                        System.out.print(">> ");
+
+                        if(!scanner.nextLine().equalsIgnoreCase("n")){
+                            organization.createEvent(name, description, eventDateTime, location);
+                            System.out.println("Evento cadastrado com sucesso");
+                        }else{
+                            System.out.println("Certo! Cancelando operacao...");
+                        }
                     }
                     case 3 -> {
-
+                        List<Event> events = organization.getEvents();
+                        if(!events.isEmpty()){
+                            for (Event event: events){
+                                System.out.println(event + " --> " + event.getParticipantCount() + " participantes");
+                            }
+                        }else {
+                            System.out.println("Voce ainda nao cadastrou nenhum evento");
+                        }
                     }
                     case 4 -> isOrgMenuRunning = false;
                     default -> System.out.println("Opcao invalida!");

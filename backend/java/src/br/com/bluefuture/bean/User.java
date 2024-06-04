@@ -88,6 +88,7 @@ public class User extends Account{
     public void joinEvent(Event event){
         if(event == null) throw new IllegalArgumentException("Event can't be empty");
 
+        event.addParticipant(this);
         this.events.add(event);
     }
 

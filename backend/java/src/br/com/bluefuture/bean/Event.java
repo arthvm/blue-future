@@ -39,13 +39,6 @@ public class Event {
     public void setName(String name) {
         if (name == null) throw new IllegalArgumentException("Name of the event can't be empty");
 
-        String regex = "^[A-Za-zÀ-ÖØ-öø-ÿ]{2,}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(name);
-
-        if (!matcher.matches()) throw new IllegalArgumentException("Name of the event must contain at least 2 letters and" +
-                " can include accents.");
-
         this.name = name;
     }
 
@@ -135,6 +128,6 @@ public class Event {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy -- HH:mm");
-        return this.getName() + "(" + getDateTime().format(formatter) + ")";
+        return this.getName() + "(" + getDateTime().format(formatter) + " em " + getLocation() + ")";
     }
 }
