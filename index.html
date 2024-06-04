@@ -55,7 +55,7 @@
                 <button class="send-button" id="send-report">Submit <img src="./assets/send-icon.png" alt="" class="send-icon"></button>
             </div>
 
-            <div class="chatbot-wrapper">
+            <div class="chatbot-wrapper" id="chatbot-wrapper">
                 <button class="sidebar-dropdown chatbot-dropdown" id="chatbot-button">
                     <span class="sidebar-left">
                         <img src="./assets/chatbot-icon.png" alt="" class="sidebar-icon globe-icon">
@@ -68,53 +68,72 @@
                 </div>
             </div>
 
-            <div class="profile-sidebar">
-                <div class="profile-sidebar-left">
-                    <img src="./assets/default-profile.webp" alt="" class="profile-image">
+            <div class="settings--wrapper">
+                <div class="profile-sidebar" id="profile-sidebar">
+                    <div class="profile-sidebar-left">
+                        <img src="./assets/default-profile.webp" alt="" class="profile-image">
 
-                    <div class="profile-infos">
-                        <h1 class="profile-name">Guilherme</h1>
-                        <p class="profile-level">Level 5</p>
+                        <div class="profile-infos">
+                            <h1 class="profile-name">Guilherme</h1>
+                            <p class="profile-level">Level 5</p>
+                        </div>
+                    </div>
+                    <div class="profile-sidebar-right">
+                        <button class="settings-button" id="settings-button"><img src="./assets/settings-icon.png" alt="" class="settings-icon"></button>
                     </div>
                 </div>
-                <div class="profile-sidebar-right">
-                    <button class="settings-button" id="settings-button"><img src="./assets/settings-icon.png" alt="" class="settings-icon"></button>
-                </div>
-            </div>
-            <div class="settings-content" id="settings-content">
-                <div class="email-wrapper default-section">
-                    <div class="email-text">
-                        <p class="sectiontitle text">E-mail</p>
-                        <p class="description-text">guimaggi@gmail.com</p>
+                <div class="settings-content" id="settings-content">
+                    <div class="email-wrapper default-section">
+                        <div class="email-text">
+                            <p class="sectiontitle text">E-mail</p>
+                            <p class="description-text">guimaggi@gmail.com</p>
+                        </div>
+                        <button class="default-button">Change</button>
                     </div>
-                    <button class="default-button">Change</button>
-                </div>
 
-                <div class="password-wrapper default-section">
-                    <div class="password-text">
-                        <p class="sectiontitle text">Password</p>
-                        <p class="description-text">********</p>
+                    <div class="password-wrapper default-section">
+                        <div class="password-text">
+                            <p class="sectiontitle text">Password</p>
+                            <p class="description-text">********</p>
+                        </div>
+                        <button class="default-button">Change</button>
                     </div>
-                    <button class="default-button">Change</button>
-                </div>
 
-                <div class="number-wrapper default-section">
-                    <div class="number-text">
-                        <p class="sectiontitle text">Number</p>
-                        <p class="description-text">+55 (11) 4002-8922</p>
+                    <div class="number-wrapper default-section">
+                        <div class="number-text">
+                            <p class="sectiontitle text">Number</p>
+                            <p class="description-text">+55 (11) 4002-8922</p>
+                        </div>
+                        <button class="default-button">Change</button>
                     </div>
-                    <button class="default-button">Change</button>
-                </div>
 
-                <div class="delete-wrapper default-section">
-                    <div class="delete-text">
-                        <p class="sectiontitle">Delete Account</p>
-                        <p class="description-text">This action can not be reverted</p>
+                    <div class="delete-wrapper default-section">
+                        <div class="delete-text">
+                            <p class="sectiontitle">Delete Account</p>
+                            <p class="description-text">This action can not be reverted</p>
+                        </div>
+                        <button class="delete-button">Delete</button>
                     </div>
-                    <button class="delete-button">Delete</button>
-                </div>
 
-                <div class="content__divider"></div>
+                    <div class="options__content">
+                        <h2 class="content__title">Achievements</h2>
+                        <div class="content__divider"></div>
+                    </div>
+
+                    <div class="achievements-wrapper">
+                        <div class="achievements--container">
+                            <img src="./assets/paper-icon.png" alt="Paper icon">
+                            <h3 class="achievements-title">A Better Future</h3>
+                            <p class="achievements-description">You sent your first report. Keep working on!</p>
+                        </div>
+                        <div class="achievements--container">
+                            <img src="./assets/landscape-icon.png" alt="Paper icon">
+                            <h3 class="achievements-title">Traveler</h3>
+                            <p class="achievements-description">You sent reports with distances between 1242,742 miles</p>
+                        </div>
+
+                    </div>
+                </div>
 
 
             </div>
