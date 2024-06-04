@@ -384,7 +384,7 @@ public class Test {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy --- HH:mm");
                         LocalDateTime eventDateTime = LocalDateTime.parse(dateTime.toString(),formatter);
 
-                        System.out.print("Onde o evento sera realizado?\n>> ");
+                        System.out.print("Onde o evento sera realizado? (CEP)\n>> ");
                         String location = scanner.nextLine();
 
                         System.out.println("Tem certeza de que deseja criar o evento? (Eventos criados nao podem ser cancelados) n/Y");

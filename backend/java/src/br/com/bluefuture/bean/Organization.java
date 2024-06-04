@@ -56,7 +56,7 @@ public class Organization extends Account{
             this.location = location;
 
         }catch (IllegalArgumentException e){
-            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -94,7 +94,7 @@ public class Organization extends Account{
             this.events.add(event);
             EventManager.addEvent(this, event);
         }catch (Exception e){
-            System.err.println("Ocorreu um erro ao cadastrar o evento --> " + e.getMessage());
+            System.out.println("Ocorreu um erro ao cadastrar o evento --> " + e.getMessage());
         }
     }
 }
