@@ -8,27 +8,26 @@ import java.util.Map;
 public class EventManager {
     private static Map<Organization, List<Event>> events = new HashMap<>();
 
-    public EventManager(){
-
+    private EventManager(){
     }
 
-    public EventManager(Map<Organization, List<Event>> eventList) {
-        events = eventList;
+    private EventManager(Map<Organization, List<Event>> eventList) {
+        EventManager.events = eventList;
     }
 
-    public void addEvent(Organization organization, Event event){
+    public static void addEvent(Organization organization, Event event){
         if(organization == null) throw new IllegalArgumentException("Organization can't be null");
         if(event == null) throw new IllegalArgumentException("Event can't be null");
 
-        List<Event> orgEvents = events.computeIfAbsent(organization, org -> new ArrayList<>());
+        List<Event> orgEvents = EventManager.events.computeIfAbsent(organization, org -> new ArrayList<>());
         orgEvents.add(event);
     }
 
-    public List<Event> getEvents(){
+    public static List<Event> getEvents(){
         List<Event> allEvents = new ArrayList<>();
 
         int index = 1;
-        for(Map.Entry<Organization, List<Event>> entry: events.entrySet()){
+        for(Map.Entry<Organization, List<Event>> entry: EventManager.events.entrySet()){
             Organization org = entry.getKey();
             System.out.println("---------------------" + org.getName() + "---------------------");
             List<Event> orgEvents = entry.getValue();

@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Test {
-    static AccountManager accountManager = new AccountManager();
-    static EventManager eventManager = new EventManager();
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         boolean isRunning = true;
@@ -117,7 +115,7 @@ public class Test {
             if(user.getName() == null || user.getEmail() == null || user.getPassword() == null) continue;
 
             try{
-                accountManager.register(user);
+                AccountManager.register(user);
                 isMissingInfo = false;
                 System.out.println("Usuario cadastrado com sucesso!");
             }catch (Exception e){
@@ -166,7 +164,7 @@ public class Test {
             if(organization.getName() == null || organization.getEmail() == null || organization.getPassword() == null) continue;
 
             try{
-                accountManager.register(organization);
+                AccountManager.register(organization);
                 isMissingInfo = false;
                 System.out.println("Usuario cadastrado com sucesso!");
             }catch (Exception e){
@@ -186,7 +184,7 @@ public class Test {
             String password = scanner.nextLine();
 
             try {
-                Account account = accountManager.login(email, password);
+                Account account = AccountManager.login(email, password);
 
                 if(account instanceof User) userMenu((User)account);
                 if(account instanceof Organization) organizationMenu();
@@ -203,6 +201,8 @@ public class Test {
         boolean isUserMenuRunning = true;
 
         while (isUserMenuRunning) {
+            AchievementsManager.checkActions(user);
+
             System.out.printf("""
                     ----------------- %s -----------------
                     Nivel: %d
@@ -215,15 +215,16 @@ public class Test {
                     
                     Participando de %d eventos
                     --------------------------------------
-                    """, user.getName(), user.getLevel(), user.getXp(),100 * (user.getLevel() + 1), user.getAssociation() == null ? "Nenhuma" : user.getAssociation(),
+                    """, user.getName(), user.getLevel(), user.getXp(),100 * user.getLevel(), user.getAssociation() == null ? "Nenhuma" : user.getAssociation(),
                     user.getAchievements().size() , user.getTrashReported(), user.getTrashCollected(), user.getEvents().size());
 
             System.out.print("""
                     1. Relatar Lixo
                     2. Participar de evento
                     3. Associar-se a Organizacao
-                    4. Sair da Organizacao Associada
-                    5. Logout
+                    4. Ver achievements
+                    5. Sair da Organizacao Associada
+                    6. Logout
                     >>\s""");
 
             try {
@@ -256,7 +257,7 @@ public class Test {
                     }
                     case 2 -> {
                         System.out.println("Para qual evento deseja se inscrever?");
-                        List<Event> allEvents = eventManager.getEvents();
+                        List<Event> allEvents = EventManager.getEvents();
                         if(!allEvents.isEmpty()){
                             System.out.print(">> ");
                             int eventIndex = scanner.nextInt();
@@ -268,7 +269,7 @@ public class Test {
                         }
                     }
                     case 3 -> {
-                        List<Organization> organizations = accountManager.getOrganizations();
+                        List<Organization> organizations = AccountManager.getOrganizations();
                         if(!organizations.isEmpty()){
                             System.out.print("Qual a organizacao que deseja se associar?");
 
@@ -286,6 +287,22 @@ public class Test {
                         }
                     }
                     case 4 -> {
+                        List<Achievement> achievements = user.getAchievements();
+                        if(achievements.isEmpty()){
+                            System.out.println("Parece que voce ainda nao tem nenhum Achievement... Esta na hora de ir " +
+                                    "atras de alguns! ");
+                        }else{
+                            for(Achievement achievement: achievements){
+                                System.out.printf("""
+                                    ----------- %s -----------
+                                    '%s'
+                                    
+                                    Level: %d
+                                    """, achievement.getName(), achievement.getDescription(), achievement.getAchievementLevel());
+                            }
+                        }
+                    }
+                    case 5 -> {
                         System.out.println("Voce tem certeza que deseja sair da " + user.getAssociation() + "? (n/Y)");
                         if(scanner.nextLine().equalsIgnoreCase("n")){
                             System.out.println("Cancelando operacao... voce continua associado com " + user.getAssociation());
@@ -295,7 +312,7 @@ public class Test {
                             System.out.println("Pronto, voce nao esta mais associado com '" + association + "'");
                         }
                     }
-                    case 5 -> isUserMenuRunning = false;
+                    case 6 -> isUserMenuRunning = false;
                     default -> System.out.println("Opcao invalida!");
                 }
             } catch (Exception e) {

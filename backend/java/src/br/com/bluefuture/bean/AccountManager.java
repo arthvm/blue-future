@@ -6,39 +6,39 @@ import java.util.List;
 import java.util.Map;
 
 public class AccountManager {
-    private final Map<String, Account> accounts;
+    private static Map<String, Account> accounts = new HashMap<>();
 
-    public AccountManager(){
-        this.accounts = new HashMap<>();
+    private AccountManager(){
+
     }
 
-    public AccountManager(Map<String, Account> accounts) {
-        this.accounts = accounts;
+    private AccountManager(Map<String, Account> accountList) {
+        AccountManager.accounts = accountList;
     }
 
-    public Map<String, Account> getAccounts() {
-        return accounts;
+    public static Map<String, Account> getAccounts() {
+        return AccountManager.accounts;
     }
 
-    public List<Organization> getOrganizations(){
+    public static List<Organization> getOrganizations(){
         List<Organization> organizations = new ArrayList<>();
 
-        for (Account account: accounts.values()){
+        for (Account account: AccountManager.accounts.values()){
             if(account instanceof Organization) organizations.add((Organization) account);
         }
 
         return organizations;
     }
 
-    public void register(Account account){
+    public static void register(Account account){
         if(account == null) throw new IllegalArgumentException("Account can't be null");
-        if(accounts.containsKey(account.getEmail())) throw new IllegalArgumentException("Account already exists");
+        if(AccountManager.accounts.containsKey(account.getEmail())) throw new IllegalArgumentException("Account already exists");
 
-        accounts.put(account.getEmail(), account);
+        AccountManager.accounts.put(account.getEmail(), account);
     }
 
-    public Account login(String email, String password){
-        Account account = accounts.get(email);
+    public static Account login(String email, String password){
+        Account account = AccountManager.accounts.get(email);
 
         if(account == null) throw new IllegalArgumentException("Account does not exist");
         if(!account.getPassword().equals(password)) throw new IllegalArgumentException("Password is incorrect");

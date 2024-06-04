@@ -15,7 +15,6 @@ public class Organization extends Account{
     private String location;
     private final List<Alert> alerts = new ArrayList<>();
     private final List<Event> events = new ArrayList<>();
-    EventManager eventManager = new EventManager();
 
     public Organization() {
     }
@@ -89,7 +88,7 @@ public class Organization extends Account{
             event.setDateTime(eventDateTime);
 
             this.events.add(event);
-            eventManager.addEvent(this, event);
+            EventManager.addEvent(this, event);
         }catch (Exception e){
             System.err.println("Ocorreu um erro ao cadastrar o evento --> " + e.getMessage());
         }

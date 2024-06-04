@@ -2,11 +2,12 @@ package br.com.bluefuture.bean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class User extends Account{
     private int trashReported;
     private int trashCollected;
-    private int level;
+    private int level = 1;
     private int xp;
     private static final int XP_PER_LEVEL = 100;
     private final List<Achievement> achievements = new ArrayList<>();
@@ -72,6 +73,9 @@ public class User extends Account{
 
     public void addAchievement(Achievement achievement){
         if(achievement == null) throw new IllegalArgumentException("Achievement can't be empty");
+        for(Achievement userAchievement: achievements){
+            if(userAchievement.getName().equals(achievement.getName())) return;
+        }
 
         this.achievements.add(achievement);
     }

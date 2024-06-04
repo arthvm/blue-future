@@ -36,9 +36,15 @@ public abstract class Achievement {
         return achievementLevel;
     }
 
-    public void addAchievementLevel(){
-        this.achievementLevel ++;
+    public void increaseLevel(){
+        this.achievementLevel++;
     }
 
-    public abstract void unlock();
+    public abstract Achievement canUnlock(User user);
+    public abstract Achievement canUpgrade(User user);
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
