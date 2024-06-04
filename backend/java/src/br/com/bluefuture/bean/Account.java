@@ -1,8 +1,5 @@
 package br.com.bluefuture.bean;
 
-import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,6 +10,12 @@ public class Account {
 
     public Account() {}
 
+    public Account(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
     public String getName() {
         return name;
     }
@@ -20,7 +23,7 @@ public class Account {
     public void setName(String name) {
         if (name == null) throw new IllegalArgumentException("Name can't be empty");
 
-        String regex = "^[A-Za-zÀ-ÖØ-öø-ÿ]{3,}$";
+        String regex = "^[A-Za-zÀ-ÖØ-öø-ÿ-\\s]{3,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(name);
 
@@ -61,5 +64,10 @@ public class Account {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
     }
 }

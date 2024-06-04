@@ -7,6 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -21,6 +22,14 @@ public class Event {
     private final List<User> participants = new ArrayList<>();
 
     public Event() {
+    }
+
+    public Event(String name, String description, LocalDateTime dateTime, String location, Organization organizer) {
+        this.name = name;
+        this.description = description;
+        this.dateTime = dateTime;
+        this.location = location;
+        this.organizer = organizer;
     }
 
     public String getName() {
@@ -121,5 +130,11 @@ public class Event {
 
     public int getParticipantCount(){
         return participants.size();
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy -- HH:mm");
+        return this.getName() + "(" + getDateTime().format(formatter) + ")";
     }
 }

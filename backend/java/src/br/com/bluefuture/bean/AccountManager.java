@@ -1,6 +1,8 @@
 package br.com.bluefuture.bean;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AccountManager {
@@ -16,6 +18,16 @@ public class AccountManager {
 
     public Map<String, Account> getAccounts() {
         return accounts;
+    }
+
+    public List<Organization> getOrganizations(){
+        List<Organization> organizations = new ArrayList<>();
+
+        for (Account account: accounts.values()){
+            if(account instanceof Organization) organizations.add((Organization) account);
+        }
+
+        return organizations;
     }
 
     public void register(Account account){

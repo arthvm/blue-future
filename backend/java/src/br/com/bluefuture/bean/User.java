@@ -15,6 +15,15 @@ public class User extends Account{
 
     public User() {}
 
+    public User(String name, String email, String password, int trashReported, int trashCollected, int level, int xp, Organization association) {
+        super(name, email, password);
+        this.trashReported = trashReported;
+        this.trashCollected = trashCollected;
+        this.level = level;
+        this.xp = xp;
+        this.association = association;
+    }
+
     public int getTrashReported() {
         return trashReported;
     }
@@ -49,7 +58,7 @@ public class User extends Account{
 
     public void reportTrash(String location, int severity, boolean wasCollected){
         if (location == null) throw new IllegalArgumentException("Location can't be empty");
-        if (severity < 0 || severity > 2) throw new IllegalArgumentException("Severity can't be less than " +
+        if (severity < 1 || severity > 3) throw new IllegalArgumentException("Severity can't be less than " +
                 "0 or more than 2");
 
         if (wasCollected){

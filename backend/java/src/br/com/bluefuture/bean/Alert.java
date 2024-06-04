@@ -15,6 +15,11 @@ public class Alert {
     public Alert() {
     }
 
+    public Alert(String location, String severity) {
+        this.location = location;
+        this.severity = severity;
+    }
+
     public String getLocation() {
         return location;
     }
