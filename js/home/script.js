@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const sidebarSection = document.getElementById('sidebar-section')
     const settingsButton = document.getElementById('settings-button')
     const settingsContent = document.getElementById('settings-content')
+    const profileContainer = document.getElementById('profile-sidebar')
+    const chatbotWrapper = document.getElementById('chatbot-wrapper')
 
     /*
     INITIALIZATION
@@ -191,36 +193,36 @@ document.addEventListener('DOMContentLoaded', function () {
         chatbotDropdownIcon.classList.toggle('rotate-icon')
     })
 
-    /*
-    SETTINGS TOGGLE
-    SETTINGS TOGGLE
-    */
+/*
+SETTINGS TOGGLE
+SETTINGS TOGGLE
+*/
 
-    /* When the settings button is clicked, toggle the settings content and hide the sidebar report */
-    settingsButton.addEventListener('click', function () {
-        if (settingsContent.classList.contains('show-settings-content')) {
-            settingsContent.classList.remove('show-settings-content')
+/* When the settings button is clicked, toggle the settings content and hide the sidebar report */
+settingsButton.addEventListener('click', function () {
+    if (settingsContent.classList.contains('show-settings-content')) {
+        settingsContent.classList.remove('show-settings-content')
 
-            /* This timeout is used to ensure the report container appears after the settings container closes */
-            setTimeout(() => {
-                settingsContent.style.display = 'none'
+        /* This timeout is used to ensure the report container appears after the settings container closes */
+        setTimeout(() => {
+            settingsContent.style.display = 'none'
+        }, 400)
 
-                sidebarReport.classList.remove('hidden-sidebar-report')
-                chatbotButton.style.display = 'flex'
-            }, 400)
-        } else {
-            settingsContent.style.display = 'flex'
+            sidebarReport.classList.remove('hidden-sidebar-report')
+            chatbotWrapper.style.display = 'flex'
+    } else {
+        settingsContent.style.display = 'flex'
 
-            /* This timeout is used to ensure the animation loads after the settings container appears */
-            setTimeout(() => {
-                settingsContent.classList.add('show-settings-content')
-            }, 1)
+        /* This timeout is used to ensure the animation loads after the settings container appears */
+        setTimeout(() => {
+            settingsContent.classList.add('show-settings-content')
+        }, 1)
 
-            sidebarReport.classList.add('hidden-sidebar-report')
-            chatbotButton.style.display = 'none'
-        }
-        settingsButton.classList.toggle('settings-active')
-    })
+        sidebarReport.classList.add('hidden-sidebar-report')
+        chatbotWrapper.style.display = 'none'
+    }
+    profileContainer.classList.toggle('settings-active')
+})
 
     /*
     REPORT SENDING
