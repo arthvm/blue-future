@@ -89,12 +89,14 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     } catch (error) {}
 
+    /* (MOBILE) When the open full popup button is clicked, the report section appears */
     openFullPopup.addEventListener('click', function () {
         console.log('clicked')
         sidebarSection.classList.remove('show-sidebar-section')
         sidebarSection.classList.add('show-sidebar-section')
     })
 
+    /* (MOBILE) When the close full popup button is clicked, the report section disappears */
     closeFullPopup.addEventListener('click', function () {
         console.log('clicked')
         sidebarSection.classList.remove('show-sidebar-section')

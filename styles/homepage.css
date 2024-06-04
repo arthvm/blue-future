@@ -590,7 +590,9 @@ input[id="collected"]:checked {
 @media (max-width: 991px) and (min-width: 768px) {
 
     body {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .homepage-main {
@@ -619,7 +621,7 @@ input[id="collected"]:checked {
         display: flex;
         position: absolute;
         height: 2.5rem;
-        margin: 1rem;
+        margin: 2rem;
         top: 0;
         left: 0;
         cursor: pointer;
@@ -663,7 +665,7 @@ input[id="collected"]:checked {
     .tooltip-popup {
         max-width: 15rem;
         border-radius: 1.5rem 0 1.5rem 1.5rem;
-        right: 35%;
+        right: 11%;
     }
 
     .severity-tooltip:hover .tooltip-popup {
@@ -676,7 +678,9 @@ input[id="collected"]:checked {
 @media (max-width: 767px) {
 
     body {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .homepage-main {
@@ -705,7 +709,7 @@ input[id="collected"]:checked {
         display: flex;
         position: absolute;
         height: 2.5rem;
-        margin: 1rem;
+        margin: 2rem;
         top: 0;
         left: 0;
         cursor: pointer;
@@ -749,7 +753,7 @@ input[id="collected"]:checked {
     .tooltip-popup {
         max-width: 15rem;
         border-radius: 1.5rem 0 1.5rem 1.5rem;
-        right: 20%;
+        right: 13%;
     }
 
     .severity-tooltip:hover .tooltip-popup {
