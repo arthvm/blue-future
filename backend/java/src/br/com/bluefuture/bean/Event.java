@@ -25,11 +25,11 @@ public class Event {
     }
 
     public Event(String name, String description, LocalDateTime dateTime, String location, Organization organizer) {
-        this.name = name;
-        this.description = description;
-        this.dateTime = dateTime;
-        this.location = location;
-        this.organizer = organizer;
+        this.setName(name);
+        this.setDescription(description);
+        this.setDateTime(dateTime);
+        this.setLocation(location);
+        this.setOrganizer(organizer);
     }
 
     public String getName() {

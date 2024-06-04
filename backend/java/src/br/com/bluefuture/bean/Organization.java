@@ -22,7 +22,7 @@ public class Organization extends Account{
 
     public Organization(String name, String email, String password, String location) {
         super(name, email, password);
-        this.location = location;
+        this.setLocation(location);
     }
 
     public String getLocation() {

@@ -129,7 +129,8 @@ public class Test {
 
     private static void createAccount(String location) {
         boolean isMissingInfo = true;
-        Organization organization = new Organization();;
+        Organization organization = new Organization();
+        organization.setLocation(location);
 
         while(isMissingInfo){
             if (organization.getName() == null) {

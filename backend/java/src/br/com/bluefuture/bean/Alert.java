@@ -16,8 +16,8 @@ public class Alert {
     }
 
     public Alert(String location, String severity) {
-        this.location = location;
-        this.severity = severity;
+        this.setLocation(location);
+        this.setSeverity(severity);
     }
 
     public String getLocation() {

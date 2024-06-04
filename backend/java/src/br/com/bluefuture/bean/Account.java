@@ -11,9 +11,9 @@ public class Account {
     public Account() {}
 
     public Account(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
+        this.setName(name);
+        this.setEmail(email);
+        this.setPassword(password);
     }
 
     public String getName() {
