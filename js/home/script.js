@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
     SIDEBAR TOGGLE (MOBILE)
     */
 
+    try {
     /* When the open full popup button is clicked, the report section appears */
     openFullPopup.addEventListener('click', function () {
         sidebarSection.classList.remove('close-animation')
@@ -123,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
             sidebarSection.removeEventListener('animationend', handleAnimationEnd)
         })
     })
+    } catch {}
 
     /*
     SEVERITY DROPDOWN
