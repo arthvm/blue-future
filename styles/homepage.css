@@ -682,6 +682,7 @@ input[id="collected"]:checked {
         left: auto;
         bottom: auto;
         max-width: 20rem;
+        z-index: 1;
     }
 
     .tooltip-popup {
@@ -779,6 +780,7 @@ input[id="collected"]:checked {
         left: auto;
         bottom: auto;
         max-width: 20rem;
+        z-index: 1;
     }
 
     .tooltip-popup {
