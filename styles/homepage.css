@@ -154,7 +154,7 @@ body {
     line-height: 100%;
 }
 
-.report-divider {
+.report-divider, .content__divider {
     all: unset;
     width: 80%;
     height: 1px;
@@ -586,10 +586,7 @@ input[id="collected"]:checked {
 }
 
 .content__divider {
-    height: 1px;
-    width: 85%;
     margin: 0.5rem auto;
-    background-color: var(--text-color);
 }
 
 /* Achievements */
@@ -615,6 +612,7 @@ input[id="collected"]:checked {
 .achievements-description {
     font-size: 0.95rem;
     line-height: 1.2;
+    color: var(--text-color-details);
 }
 
 img {
