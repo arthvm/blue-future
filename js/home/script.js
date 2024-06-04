@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const openFullPopup = document.getElementById('open-full-popup')
     const closeFullPopup = document.getElementById('close-full-popup')
     const sidebarSection = document.getElementById('sidebar-section')
+    const settingsButton = document.getElementById('settings-button')
+    const settingsContent = document.getElementById('settings-content')
 
     /*
     INITIALIZATION
@@ -187,6 +189,37 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         chatbotButton.classList.toggle('chatbot-active')
         chatbotDropdownIcon.classList.toggle('rotate-icon')
+    })
+
+    /*
+    SETTINGS TOGGLE
+    SETTINGS TOGGLE
+    */
+
+    /* When the settings button is clicked, toggle the settings content and hide the sidebar report */
+    settingsButton.addEventListener('click', function () {
+        if (settingsContent.classList.contains('show-settings-content')) {
+            settingsContent.classList.remove('show-settings-content')
+
+            /* This timeout is used to ensure the report container appears after the settings container closes */
+            setTimeout(() => {
+                settingsContent.style.display = 'none'
+
+                sidebarReport.classList.remove('hidden-sidebar-report')
+                chatbotButton.style.display = 'flex'
+            }, 400)
+        } else {
+            settingsContent.style.display = 'flex'
+
+            /* This timeout is used to ensure the animation loads after the settings container appears */
+            setTimeout(() => {
+                settingsContent.classList.add('show-settings-content')
+            }, 1)
+
+            sidebarReport.classList.add('hidden-sidebar-report')
+            chatbotButton.style.display = 'none'
+        }
+        settingsButton.classList.toggle('settings-active')
     })
 
     /*
