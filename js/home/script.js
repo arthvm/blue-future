@@ -91,15 +91,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* (MOBILE) When the open full popup button is clicked, the report section appears */
     openFullPopup.addEventListener('click', function () {
-        console.log('clicked')
-        sidebarSection.classList.remove('show-sidebar-section')
-        sidebarSection.classList.add('show-sidebar-section')
+        sidebarSection.classList.remove('close-animation')
+        sidebarSection.classList.add('show-sidebar-section', 'open-animation')
     })
 
     /* (MOBILE) When the close full popup button is clicked, the report section disappears */
     closeFullPopup.addEventListener('click', function () {
-        console.log('clicked')
-        sidebarSection.classList.remove('show-sidebar-section')
+        sidebarSection.classList.remove('open-animation')
+        sidebarSection.classList.add('close-animation')
+
+        /* Remove visibility and animation class only after the animation ends */
+        sidebarSection.addEventListener('animationend', function handleAnimationEnd() {
+            sidebarSection.classList.remove('show-sidebar-section', 'close-animation')
+            sidebarSection.removeEventListener('animationend', handleAnimationEnd)
+        })
     })
 
     /* When the severity button is clicked, the dropdown content appears */

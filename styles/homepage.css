@@ -571,6 +571,28 @@ input[id="collected"]:checked {
     }
 }
 
+@keyframes openFullScreen {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes closeFullScreen {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
 ::-webkit-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -672,6 +694,15 @@ input[id="collected"]:checked {
         display: flex;
         flex-direction: column;
     }
+
+    .open-animation {
+        animation: openFullScreen 0.3s forwards;
+    }
+    
+    .close-animation {
+        animation: closeFullScreen 0.3s forwards;
+    }
+
 }
 
 /* Extra small screens styling */
@@ -759,6 +790,14 @@ input[id="collected"]:checked {
     .severity-tooltip:hover .tooltip-popup {
         display: flex;
         flex-direction: column;
+    }
+
+    .open-animation {
+        animation: openFullScreen 0.3s forwards;
+    }
+    
+    .close-animation {
+        animation: closeFullScreen 0.3s forwards;
     }
 
 }
