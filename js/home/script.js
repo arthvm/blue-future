@@ -20,13 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const alertPopup = document.getElementById('alert-popup')
     const alertTitle = document.getElementById('alert-title')
     const alertDescription = document.getElementById('alert-description')
+    const openFullPopup = document.getElementById('open-full-popup')
+    const closeFullPopup = document.getElementById('close-full-popup')
+    const sidebarSection = document.getElementById('sidebar-section')
 
-    /* Remove the "ghost space" when the page is loaded */
-    sidebar.classList.add('display-none')
+    /* Try / Catch block to prevent the page from breaking if the elements are not found */
+    try {
+        /* Remove the "ghost space" when the page is loaded */
+        sidebar.classList.add('display-none')
+
+        /* Ensuring the close sidebar icon doesn't show when the page is loaded */
+        closeIcon.style.display = 'none'
+    } catch (error) {}
+
     alertPopup.classList.add('remove-popup')
-    
-    /* Ensuring the close sidebar icon doesn't show when the page is loaded */
-    closeIcon.style.display = 'none'
 
     /* Function to show an alert pop up on the screen, replacing the default alert box */
     function showAlert(title, description) {
@@ -51,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 10000)
     }
 
+    /* Try / Catch block to prevent the page from breaking if the elements are not found */
+    try {
     /* When the hamburger icon is clicked, the sidebar appears and the map is reduced to 76vw */
     hamburgerIcon.addEventListener('click', function () {
         sidebar.classList.remove('display-none')
@@ -77,6 +86,18 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             sidebar.classList.add('display-none')
         }, 300)
+    })
+    } catch (error) {}
+
+    openFullPopup.addEventListener('click', function () {
+        console.log('clicked')
+        sidebarSection.classList.remove('show-sidebar-section')
+        sidebarSection.classList.add('show-sidebar-section')
+    })
+
+    closeFullPopup.addEventListener('click', function () {
+        console.log('clicked')
+        sidebarSection.classList.remove('show-sidebar-section')
     })
 
     /* When the severity button is clicked, the dropdown content appears */
@@ -115,16 +136,20 @@ document.addEventListener('DOMContentLoaded', function () {
             /* This timeout is used to ensure the report container appears after the chatbot container closes */
             setTimeout(() => {
                 chatbotContent.style.display = 'none'
+
                 sidebarReport.classList.remove('hidden-sidebar-report')
             }, 400)
         } else {
+
             chatbotContent.style.display = 'flex'
 
             /* This timeout is used to ensure the animation loads after the chatbot container appears */
             setTimeout(() => {
                 chatbotContent.classList.add('show-chatbot-content')
             }, 1)
+
             sidebarReport.classList.add('hidden-sidebar-report')
+            
         }
         chatbotButton.classList.toggle('chatbot-active')
         chatbotDropdownIcon.classList.toggle('rotate-icon')

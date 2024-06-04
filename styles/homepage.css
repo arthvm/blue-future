@@ -329,16 +329,6 @@ body {
     z-index: 3;
 }
 
-.tooltip-popup::before {
-    content: '';
-    position: absolute;
-    top: -0.55rem;
-    left: 0;
-    border-width: 0 0.6rem 0.6rem 0.6rem;
-    border-style: solid;
-    border-color: transparent transparent var(--secondary-color) transparent;
-}
-
 .tooltip-description {
     margin: 0.5rem;
     color: var(--text-color-details);
@@ -585,4 +575,186 @@ input[id="collected"]:checked {
     -ms-overflow-style: none;
     scrollbar-width: none;
     display: none;
+}
+
+/* Medium screens styling */
+@media (max-width: 1199px) and (min-width: 992px) {
+
+    .dropdown-tooltip {
+        gap: 1rem;
+    }
+
+}
+
+/* Small screens styling */
+@media (max-width: 991px) and (min-width: 768px) {
+
+    body {
+        display: block;
+    }
+
+    .homepage-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar-section {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: var(--background-color);
+    }
+
+    .open-full-popup, .close-full-popup {
+        all: unset;
+        display: flex;
+        position: absolute;
+        height: 2.5rem;
+        margin: 1rem;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+    }
+
+    .open-popup-icon {
+        color: var(--secondary-color);
+        transform: translateY(1rem);
+    }
+
+    .close-popup-icon {
+        color: var(--primary-color);
+        transform: translateY(1rem);
+    }
+
+    .show-sidebar-section {
+        display: flex;
+    }
+
+    .chatbot-wrapper {
+        width: 80%;
+    }
+
+    .profile-sidebar {
+        width: 80%;
+    }
+
+    .map {
+        height: 98vh;
+        width: 98vw;
+    }
+
+    .alert-popup {
+        position: fixed;
+        top: 2%;
+        left: auto;
+        bottom: auto;
+        max-width: 20rem;
+    }
+
+    .tooltip-popup {
+        max-width: 15rem;
+        border-radius: 1.5rem 0 1.5rem 1.5rem;
+        right: 35%;
+    }
+
+    .severity-tooltip:hover .tooltip-popup {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Extra small screens styling */
+@media (max-width: 767px) {
+
+    body {
+        display: block;
+    }
+
+    .homepage-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar-section {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: var(--background-color);
+    }
+
+    .open-full-popup, .close-full-popup {
+        all: unset;
+        display: flex;
+        position: absolute;
+        height: 2.5rem;
+        margin: 1rem;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+    }
+
+    .open-popup-icon {
+        color: var(--secondary-color);
+        transform: translateY(1rem);
+    }
+
+    .close-popup-icon {
+        color: var(--primary-color);
+        transform: translateY(1rem);
+    }
+
+    .show-sidebar-section {
+        display: flex;
+    }
+
+    .chatbot-wrapper {
+        width: 80%;
+    }
+
+    .profile-sidebar {
+        width: 80%;
+    }
+
+    .map {
+        height: 98vh;
+        width: 98vw;
+    }
+
+    .alert-popup {
+        position: fixed;
+        top: 2%;
+        left: auto;
+        bottom: auto;
+        max-width: 20rem;
+    }
+
+    .tooltip-popup {
+        max-width: 15rem;
+        border-radius: 1.5rem 0 1.5rem 1.5rem;
+        right: 20%;
+    }
+
+    .severity-tooltip:hover .tooltip-popup {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
