@@ -187,7 +187,7 @@ public class Test {
                 Account account = AccountManager.login(email, password);
 
                 if(account instanceof User) userMenu((User)account);
-                if(account instanceof Organization) organizationMenu();
+                if(account instanceof Organization) organizationMenu((Organization) account);
 
                 isLoggingIn = false;
             } catch (Exception e) {
@@ -271,13 +271,13 @@ public class Test {
                     case 3 -> {
                         List<Organization> organizations = AccountManager.getOrganizations();
                         if(!organizations.isEmpty()){
-                            System.out.print("Qual a organizacao que deseja se associar?");
+                            System.out.println("Qual a organizacao que deseja se associar?");
 
                             for (int i = 0; i < organizations.size(); i++) {
-                                System.out.println((i + 1) + ". " + organizations.get(i));
+                                System.out.println((i + 1) + ". " + organizations.get(i) + "(Sediada em: " + organizations.get(i).getLocation() + ")");
                             }
 
-                            System.out.println(">> ");
+                            System.out.print(">> ");
                             user.setAssociation(organizations.get(scanner.nextInt() - 1));
                             scanner.nextLine();
 
@@ -323,8 +323,64 @@ public class Test {
         }
     }
 
-    private static void organizationMenu(){
+    private static void organizationMenu(Organization organization){
+        boolean isOrgMenuRunning = true;
 
+        while (isOrgMenuRunning) {
+            System.out.print("""
+                    1. Alertas
+                    2. Criar eventos
+                    3. Ver eventos
+                    4. Logout
+                    >>\s""");
+
+            try {
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (choice) {
+                    case 1 -> {
+                        List<Alert> alerts = organization.getAlerts();
+                        if(!alerts.isEmpty()){
+                            for(int i = 0; i < alerts.size(); i++){
+                                System.out.println("Numero do alerta: " + (i + 1));
+                                System.out.println(alerts.get(i));
+                            }
+
+                            System.out.println("Insira o numero de um alerta para marca-lo como concluido(Opcional):");
+                            System.out.print(">> ");
+                            String alertChoice = scanner.nextLine();
+                            int index;
+                            try {
+                                index = Integer.parseInt(alertChoice);
+                            }catch (Exception e){
+                                index = 0;
+                            }
+
+                            if(index != 0){
+                                organization.removeAlert(alerts.get(index - 1));
+                                System.out.println("Alerta marcado como concluido");
+                            }
+
+                        }else{
+                            System.out.println("Nenhum alerta registrado");
+                        }
+                    }
+                    case 2 -> {
+
+                    }
+                    case 3 -> {
+
+                    }
+                    case 4 -> isOrgMenuRunning = false;
+                    default -> System.out.println("Opcao invalida!");
+                }
+            } catch (Exception e) {
+                System.out.println("Something went wrong!");
+                System.out.println("Error: " + e.getMessage());
+                scanner.nextLine(); // Clear the scanner buffer
+            }
+        }
     }
 
 

@@ -69,6 +69,11 @@ public class User extends Account{
 
         increaseXP(10);
         trashReported++;
+
+        if(this.association != null && !wasCollected){
+            Alert alert = new Alert(location, severity == 1 ? "Baixa" : severity == 2 ? "Media" : "Alta");
+            association.addAlert(alert);
+        }
     }
 
     public void addAchievement(Achievement achievement){

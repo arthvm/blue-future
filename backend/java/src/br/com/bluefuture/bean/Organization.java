@@ -76,6 +76,13 @@ public class Organization extends Account{
         this.alerts.add(alert);
     }
 
+    public void removeAlert(Alert alert){
+        if (alert == null) throw new IllegalArgumentException("Alert can't be null");
+        if(!alerts.contains(alert)) throw new IllegalArgumentException("Alert doesn't exists");
+
+        this.alerts.remove(alert);
+    }
+
     public void createEvent(String eventName, String description, LocalDateTime eventDateTime){
         if (eventName == null) throw new IllegalArgumentException("Event name can't be null");
         if (description == null) throw new IllegalArgumentException("Event description can't be null");
