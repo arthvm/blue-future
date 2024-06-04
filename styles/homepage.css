@@ -374,7 +374,7 @@ input[id="collected"]:checked {
     box-shadow: 0 0 0 2px var(--primary-color-opacity);
 }
 
-.send-button {
+.send-button, .default-button {
     all: unset;
     display: flex;
     align-items: center;
@@ -487,6 +487,97 @@ input[id="collected"]:checked {
     width: 100%;
     height: 100%;
     transition: opacity 0.4s ease;
+}
+
+/* Settings */
+.settings-content {
+    display: none;
+    position: relative;
+    width: 94%;
+    flex-direction: column;
+    margin-top: 0.8rem;
+    /* background-color: var(--sidebar-widget-color);
+    padding: 3rem;
+    margin: -1rem; */
+}
+
+.show-settings-content {
+    display: flex;
+    /* height: 80vh; */
+    opacity: 1;
+}
+
+.default-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 2rem 0.3rem;
+    width: 100%;
+}
+.sectiontitle {
+    font-weight: 550;
+}
+
+.description-text {
+    color: var(--text-color-details);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.text, .description-text {
+    margin: 0.15rem 0;
+    width: fit-content;
+}
+
+.default-button:hover {
+    background-color: var(--secondary-color);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    transition: all 100ms;
+}
+
+.delete-button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6vh;
+    gap: 2rem;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    transition: all 100ms;
+    cursor: pointer;
+    color: var(--text-color);
+    background-color: var(--severity-high-opacity);
+    border: 2px solid var(--severity-high);
+}
+
+
+.delete-button:hover{
+    background-color: var(--severity-high);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    transition: all 100ms;
+}
+
+.content__title {
+    font-size: 1.5rem;
+}
+
+.options__content {
+    align-items: center;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.3rem;
+}
+
+.content__divider {
+    height: 1px;
+    width: 85%;
+    margin: 0.5rem auto;
+    background-color: var(--text-color);
 }
 
 /* Alert popup styling */
