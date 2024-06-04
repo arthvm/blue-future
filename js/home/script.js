@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeFullPopup = document.getElementById('close-full-popup')
     const sidebarSection = document.getElementById('sidebar-section')
 
-    /* Try / Catch block to prevent the page from breaking if the elements are not found */
+    /*
+    INITIALIZATION
+    INITIALIZATION
+    */
+
     try {
         /* Remove the "ghost space" when the page is loaded */
         sidebar.classList.add('display-none')
@@ -35,7 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     alertPopup.classList.add('remove-popup')
 
-    /* Function to show an alert pop up on the screen, replacing the default alert box */
+    /*
+    SHOW ALERT FUNCTION
+    SHOW ALERT FUNCTION
+    */
+
     function showAlert(title, description) {
         alertTitle.textContent = title
         alertDescription.textContent = description
@@ -58,44 +66,53 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 10000)
     }
 
-    /* Try / Catch block to prevent the page from breaking if the elements are not found */
+    /*
+    SIDEBAR TOGGLE (DESKTOP)
+    SIDEBAR TOGGLE (DESKTOP)
+    */
+
     try {
-    /* When the hamburger icon is clicked, the sidebar appears and the map is reduced to 76vw */
-    hamburgerIcon.addEventListener('click', function () {
-        sidebar.classList.remove('display-none')
+        /* When the hamburger icon is clicked, the sidebar appears and the map is reduced to 76vw */
+        hamburgerIcon.addEventListener('click', function () {
+            sidebar.classList.remove('display-none')
 
-        /* This timeout is used to prevent all those functions loading with the "display-none" class removal */
-        setTimeout(() => {
-            sidebar.classList.remove('hidden')
-            mapWrapper.classList.remove('full-width')
-            mapWrapper.classList.add('reduced-width')
-            hamburgerIcon.style.display = 'none'
-            closeIcon.style.display = 'block'
-        }, 1)
-    })
+            /* This timeout is used to prevent all those functions loading with the "display-none" class removal */
+            setTimeout(() => {
+                sidebar.classList.remove('hidden')
+                mapWrapper.classList.remove('full-width')
+                mapWrapper.classList.add('reduced-width')
+                hamburgerIcon.style.display = 'none'
+                closeIcon.style.display = 'block'
+            }, 1)
+        })
 
-    /* When the close icon is clicked, the sidebar disappears and the map is increased to 98vw */
-    closeIcon.addEventListener('click', function () {
-        sidebar.classList.add('hidden')
-        mapWrapper.classList.add('full-width')
-        mapWrapper.classList.remove('reduced-width')
-        closeIcon.style.display = 'none'
-        hamburgerIcon.style.display = 'block'
+        /* When the close icon is clicked, the sidebar disappears and the map is increased to 98vw */
+        closeIcon.addEventListener('click', function () {
+            sidebar.classList.add('hidden')
+            mapWrapper.classList.add('full-width')
+            mapWrapper.classList.remove('reduced-width')
+            closeIcon.style.display = 'none'
+            hamburgerIcon.style.display = 'block'
 
-        /* This timeout is used to remove the "ghost space" on the page without the sidebar */
-        setTimeout(() => {
-            sidebar.classList.add('display-none')
-        }, 300)
-    })
+            /* This timeout is used to remove the "ghost space" on the page without the sidebar */
+            setTimeout(() => {
+                sidebar.classList.add('display-none')
+            }, 300)
+        })
     } catch (error) {}
 
-    /* (MOBILE) When the open full popup button is clicked, the report section appears */
+    /*
+    SIDEBAR TOGGLE (MOBILE)
+    SIDEBAR TOGGLE (MOBILE)
+    */
+
+    /* When the open full popup button is clicked, the report section appears */
     openFullPopup.addEventListener('click', function () {
         sidebarSection.classList.remove('close-animation')
         sidebarSection.classList.add('show-sidebar-section', 'open-animation')
     })
 
-    /* (MOBILE) When the close full popup button is clicked, the report section disappears */
+    /* When the close full popup button is clicked, the report section disappears */
     closeFullPopup.addEventListener('click', function () {
         sidebarSection.classList.remove('open-animation')
         sidebarSection.classList.add('close-animation')
@@ -107,15 +124,20 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     })
 
+    /*
+    SEVERITY DROPDOWN
+    SEVERITY DROPDOWN
+    */
+
     /* When the severity button is clicked, the dropdown content appears */
     severityDropdown.addEventListener('click', function () {
-            if (severityDropdown.classList.contains('not-allowed-cursor')) {
-                return
-            } else {
-                dropdownContent.classList.toggle('show-dropdown-content')
-                severityDropdown.classList.toggle('dropdown-active')
-                rotateIcon.classList.toggle('rotate-icon')
-            }
+        if (severityDropdown.classList.contains('not-allowed-cursor')) {
+            return
+        } else {
+            dropdownContent.classList.toggle('show-dropdown-content')
+            severityDropdown.classList.toggle('dropdown-active')
+            rotateIcon.classList.toggle('rotate-icon')
+        }
     })
 
     /* Select Low, Medium and High severity, and change the button according to the option selected */
@@ -135,6 +157,11 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     })
 
+    /*
+    CHATBOT TOGGLE
+    CHATBOT TOGGLE
+    */
+
     /* When the chatbot dropdown is clicked, toggle the chatbot content and hide the sidebar report */
     chatbotButton.addEventListener('click', function () {
         if (chatbotContent.classList.contains('show-chatbot-content')) {
@@ -147,7 +174,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 sidebarReport.classList.remove('hidden-sidebar-report')
             }, 400)
         } else {
-
             chatbotContent.style.display = 'flex'
 
             /* This timeout is used to ensure the animation loads after the chatbot container appears */
@@ -156,11 +182,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 1)
 
             sidebarReport.classList.add('hidden-sidebar-report')
-            
         }
         chatbotButton.classList.toggle('chatbot-active')
         chatbotDropdownIcon.classList.toggle('rotate-icon')
     })
+
+    /*
+    REPORT SENDING
+    REPORT SENDING
+    */
 
     /* When the send report button is clicked, send the report to the map endpoint */
     sendReportButton.addEventListener('click', function () {
@@ -246,6 +276,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         getLocation()
     })
+
+    /*
+    REPORT FORM AND BUTTON BLOCK/UNBLOCK
+    REPORT FORM AND BUTTON BLOCK/UNBLOCK
+    */
 
     /* Block the report form and change the submit button style after the report is sent */
     function blockReportForm() {
