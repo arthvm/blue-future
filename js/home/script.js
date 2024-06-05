@@ -198,31 +198,31 @@ SETTINGS TOGGLE
 SETTINGS TOGGLE
 */
 
-/* When the settings button is clicked, toggle the settings content and hide the sidebar report */
-settingsButton.addEventListener('click', function () {
-    if (settingsContent.classList.contains('show-settings-content')) {
-        settingsContent.classList.remove('show-settings-content')
+    /* When the settings button is clicked, toggle the settings content and hide the sidebar report */
+    settingsButton.addEventListener('click', function () {
+        if (settingsContent.classList.contains('show-settings-content')) {
+            settingsContent.classList.remove('show-settings-content')
 
-        /* This timeout is used to ensure the report container appears after the settings container closes */
-        setTimeout(() => {
-            settingsContent.style.display = 'none'
-        }, 400)
+            /* This timeout is used to ensure the report container appears after the settings container closes */
+            setTimeout(() => {
+                settingsContent.style.display = 'none'
+            }, 400)
 
-            sidebarReport.classList.remove('hidden-sidebar-report')
-            chatbotWrapper.style.display = 'flex'
-    } else {
-        settingsContent.style.display = 'flex'
+                sidebarReport.classList.remove('hidden-sidebar-report')
+                chatbotWrapper.style.display = 'flex'
+        } else {
+            settingsContent.style.display = 'flex'
 
-        /* This timeout is used to ensure the animation loads after the settings container appears */
-        setTimeout(() => {
-            settingsContent.classList.add('show-settings-content')
-        }, 1)
+            /* This timeout is used to ensure the animation loads after the settings container appears */
+            setTimeout(() => {
+                settingsContent.classList.add('show-settings-content')
+            }, 1)
 
-        sidebarReport.classList.add('hidden-sidebar-report')
-        chatbotWrapper.style.display = 'none'
-    }
-    profileContainer.classList.toggle('settings-active')
-})
+            sidebarReport.classList.add('hidden-sidebar-report')
+            chatbotWrapper.style.display = 'none'
+        }
+        profileContainer.classList.toggle('settings-active')
+    })
 
     /*
     REPORT SENDING
