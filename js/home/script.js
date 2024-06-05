@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const settingsContent = document.getElementById('settings-content')
     const profileContainer = document.getElementById('profile-sidebar')
     const chatbotWrapper = document.getElementById('chatbot-wrapper')
+    const devTeam = document.getElementById('dev-team')
 
     /*
     INITIALIZATION
@@ -178,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 chatbotContent.style.display = 'none'
 
                 sidebarReport.classList.remove('hidden-sidebar-report')
+                devTeam.style.display = 'flex'
             }, 400)
         } else {
             chatbotContent.style.display = 'flex'
@@ -188,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 1)
 
             sidebarReport.classList.add('hidden-sidebar-report')
+            devTeam.style.display = 'none'
         }
         chatbotButton.classList.toggle('chatbot-active')
         chatbotDropdownIcon.classList.toggle('rotate-icon')
@@ -210,6 +213,7 @@ SETTINGS TOGGLE
 
                 sidebarReport.classList.remove('hidden-sidebar-report')
                 chatbotWrapper.style.display = 'flex'
+                devTeam.style.display = 'flex'
         } else {
             settingsContent.style.display = 'flex'
 
@@ -220,6 +224,7 @@ SETTINGS TOGGLE
 
             sidebarReport.classList.add('hidden-sidebar-report')
             chatbotWrapper.style.display = 'none'
+            devTeam.style.display = 'none'
         }
         profileContainer.classList.toggle('settings-active')
     })
