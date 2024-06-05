@@ -206,7 +206,10 @@ settingsButton.addEventListener('click', function () {
             settingsContent.style.display = 'none'
         }, 400)
 
-        sidebarReport.classList.remove('hidden-sidebar-report')
+        if (!chatbotContent.classList.contains('show-chatbot-content')) {
+            sidebarReport.classList.remove('hidden-sidebar-report')
+        }
+
         chatbotWrapper.style.display = 'flex'
         devTeam.style.display = 'flex'
     } else {
