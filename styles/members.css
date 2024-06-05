@@ -110,8 +110,8 @@ p {
 }
 
 .gmail-icon {
-  width: 7%;
-  height: 7%;
+  width: 3vh;
+  height: 3vh;
 }
 
 .devteam-github-link {
@@ -177,4 +177,24 @@ p {
 
 .bottomtext:visited {
   color: var(--text-color);
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .dvt-large {
+    width: 16rem;
+    height: 30.0625rem;
+  }
+
+  .devteam-wrapper {
+    margin: 1.5rem;
+  }
+
+  .devteam-name {
+    font-size: 1.6rem;
+  }
+
+  .devteam-rm {
+    margin-top: 0.7rem;
+  }
+
 }
