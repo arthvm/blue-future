@@ -88,6 +88,7 @@ body {
 }
 
 .hidden {
+    height: 0;
     width: 0;
     opacity: 0;
 }
@@ -758,7 +759,7 @@ img {
 }
 
 /* Small screens styling */
-@media (max-width: 991px) and (min-width: 768px) {
+@media (max-width: 991px) {
 
     body {
         display: flex;
@@ -775,14 +776,13 @@ img {
 
     .sidebar-wrapper {
         display: none;
-        position: absolute;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 1rem;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 98vh;
         width: 100vw;
         background-color: var(--background-color);
     }
@@ -845,102 +845,8 @@ img {
         flex-direction: column;
     }
 
-    .open-animation {
-        animation: openFullScreen 0.3s forwards;
-    }
-    
-    .close-animation {
-        animation: closeFullScreen 0.3s forwards;
-    }
-
-}
-
-/* Extra small screens styling */
-@media (max-width: 767px) {
-
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .homepage-main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .sidebar-section {
-        display: none;
-        position: absolute;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        background-color: var(--background-color);
-    }
-
-    .open-full-popup, .close-full-popup {
-        all: unset;
-        display: flex;
-        position: absolute;
-        height: 2.5rem;
-        margin: 2rem;
-        top: 0;
-        left: 0;
-        cursor: pointer;
-    }
-
-    .open-popup-icon {
-        color: var(--secondary-color);
-        transform: translateY(1rem);
-    }
-
-    .close-popup-icon {
-        color: var(--primary-color);
-        transform: translateY(1rem);
-    }
-
-    .show-sidebar-section {
-        display: flex;
-    }
-
-    .chatbot-wrapper {
+    .settings-content {
         width: 80%;
-    }
-
-    .profile-sidebar {
-        width: 80%;
-    }
-
-    .map {
-        height: 98vh;
-        width: 98vw;
-    }
-
-    .alert-popup {
-        position: fixed;
-        top: 2%;
-        left: auto;
-        bottom: auto;
-        max-width: 20rem;
-        z-index: 1;
-    }
-
-    .tooltip-popup {
-        max-width: 15rem;
-        border-radius: 1.5rem 0 1.5rem 1.5rem;
-        right: 13%;
-    }
-
-    .severity-tooltip:hover .tooltip-popup {
-        display: flex;
-        flex-direction: column;
     }
 
     .open-animation {

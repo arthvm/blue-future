@@ -28,36 +28,10 @@ const chatbotWrapper = document.getElementById('chatbot-wrapper')
 const devTeam = document.getElementById('dev-team')
 
 
-hamburgerIcon.addEventListener("click", ()=> {
-    if(document.documentElement.clientWidth >= 768){
-        sidebar.style.display = 'flex'
-
-        setTimeout(() => {
-            sidebar.classList.remove('hidden')
-            mapWrapper.classList.remove('full-width')
-            mapWrapper.classList.add('reduced-width')
-            hamburgerIcon.style.display = 'none'
-            closeIcon.style.display = 'block'
-        }, 1)
-    }else{
-        sidebar.style.display = 'flex'
-
-        setTimeout(() => {
-            sidebar.classList.remove('hidden')
-            mapWrapper.style.display = 'none'
-            hamburgerIcon.style.display = 'none'
-            closeIcon.style.display = 'block'
-        }, 1)
-    }
-    
-});
-
 /*
 INITIALIZATION
 INITIALIZATION
 */
-
-/* Remove the "ghost space" when the page is loaded */
 
 /* Ensuring the close sidebar icon doesn't show when the page is loaded */
 closeIcon.style.display = 'none'
@@ -92,13 +66,13 @@ function showAlert(title, description) {
 }
 
 /*
-SIDEBAR TOGGLE (DESKTOP)
-SIDEBAR TOGGLE (DESKTOP)
+SIDEBAR TOGGLE
+SIDEBAR TOGGLE
 */
 
-/* try {
-    hamburgerIcon.addEventListener('click', function () {
-        sidebar.classList.remove('display-none')
+hamburgerIcon.addEventListener('click', () => {
+    if(document.documentElement.clientWidth >= 992) {
+        sidebar.style.display = 'flex'
 
         setTimeout(() => {
             sidebar.classList.remove('hidden')
@@ -107,43 +81,40 @@ SIDEBAR TOGGLE (DESKTOP)
             hamburgerIcon.style.display = 'none'
             closeIcon.style.display = 'block'
         }, 1)
-    })
+    } else {
+        sidebar.style.display = 'flex'
 
-    closeIcon.addEventListener('click', function () {
-        sidebar.classList.add('hidden')
-        mapWrapper.classList.add('full-width')
-        mapWrapper.classList.remove('reduced-width')
-        closeIcon.style.display = 'none'
-        hamburgerIcon.style.display = 'block'
-
-        
         setTimeout(() => {
-            sidebar.classList.add('display-none')
-        }, 300)
-    })
-} catch (error) {} */
-
-/*
-SIDEBAR TOGGLE (MOBILE)
-SIDEBAR TOGGLE (MOBILE)
-*/
-
-/* try {
-openFullPopup.addEventListener('click', function () {
-    sidebarSection.classList.remove('close-animation')
-    sidebarSection.classList.add('show-sidebar-section', 'open-animation')
+            sidebar.classList.remove('hidden')
+            mapWrapper.style.display = 'none'
+            hamburgerIcon.style.display = 'none'
+            closeIcon.style.display = 'block'
+        }, 1)
+    }
 })
 
-closeFullPopup.addEventListener('click', function () {
-    sidebarSection.classList.remove('open-animation')
-    sidebarSection.classList.add('close-animation')
+closeIcon.addEventListener('click', () => {
+    if(document.documentElement.clientWidth >= 992) {
 
-    sidebarSection.addEventListener('animationend', function handleAnimationEnd() {
-        sidebarSection.classList.remove('show-sidebar-section', 'close-animation')
-        sidebarSection.removeEventListener('animationend', handleAnimationEnd)
-    })
+        setTimeout(() => {
+            sidebar.style.display = 'none'
+            sidebar.classList.add('hidden')
+            mapWrapper.classList.add('full-width')
+            mapWrapper.classList.remove('reduced-width')
+            closeIcon.style.display = 'none'
+            hamburgerIcon.style.display = 'block'
+        }, 1)
+    } else {
+
+        setTimeout(() => {
+            sidebar.style.display = 'none'
+            sidebar.classList.add('hidden')
+            mapWrapper.style.display = 'flex'
+            closeIcon.style.display = 'none'
+            hamburgerIcon.style.display = 'block'
+        }, 1)
+    }
 })
-} catch {} */
 
 /*
 SEVERITY DROPDOWN
