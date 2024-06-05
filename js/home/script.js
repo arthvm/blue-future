@@ -70,49 +70,59 @@ SIDEBAR TOGGLE
 SIDEBAR TOGGLE
 */
 
+/* When the hamburger icon is clicked, the sidebar appears */
 hamburgerIcon.addEventListener('click', () => {
-    if(document.documentElement.clientWidth >= 992) {
-        sidebar.style.display = 'flex'
+    sidebar.style.display = 'flex'
 
-        setTimeout(() => {
+    /* If the screen width is greater than 992px, the sidebar slides horizontally */
+    if (document.documentElement.clientWidth >= 992) {
+
             sidebar.classList.remove('hidden')
             mapWrapper.classList.remove('full-width')
             mapWrapper.classList.add('reduced-width')
             hamburgerIcon.style.display = 'none'
             closeIcon.style.display = 'block'
-        }, 1)
     } else {
-        sidebar.style.display = 'flex'
+        sidebar.classList.remove('sidebar-slide-out-vertical')
+        sidebar.classList.add('sidebar-slide-in-vertical')
 
+        /* This timeout is used to ensure the sidebar appears after the animation loads */
         setTimeout(() => {
             sidebar.classList.remove('hidden')
-            mapWrapper.style.display = 'none'
             hamburgerIcon.style.display = 'none'
             closeIcon.style.display = 'block'
         }, 1)
     }
 })
 
+/* When the close sidebar icon is clicked, the sidebar disappears */
 closeIcon.addEventListener('click', () => {
-    if(document.documentElement.clientWidth >= 992) {
+    mapWrapper.classList.add('full-width')
+    mapWrapper.classList.remove('reduced-width')
 
+    /* If the screen width is greater than 992px, the sidebar slides horizontally */
+    if (document.documentElement.clientWidth >= 992) {
+
+        sidebar.classList.add('hidden')
+        closeIcon.style.display = 'none'
+        hamburgerIcon.style.display = 'block'
+
+        /* This timeout is used to ensure the sidebar disappears after the animation finishes */
         setTimeout(() => {
             sidebar.style.display = 'none'
-            sidebar.classList.add('hidden')
-            mapWrapper.classList.add('full-width')
-            mapWrapper.classList.remove('reduced-width')
-            closeIcon.style.display = 'none'
-            hamburgerIcon.style.display = 'block'
-        }, 1)
+        }, 300)
     } else {
+        sidebar.classList.remove('sidebar-slide-in-vertical')
+        sidebar.classList.add('sidebar-slide-out-vertical')
 
+        /* This timeout is used to ensure the sidebar disappears after the animation finishes */
         setTimeout(() => {
             sidebar.style.display = 'none'
             sidebar.classList.add('hidden')
-            mapWrapper.style.display = 'flex'
             closeIcon.style.display = 'none'
             hamburgerIcon.style.display = 'block'
-        }, 1)
+            sidebar.classList.remove('sidebar-slide-out-vertical')
+        }, 400)
     }
 })
 

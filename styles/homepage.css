@@ -691,55 +691,22 @@ img {
 }
 
 /* Animations */
-@keyframes revealDropdown {
-    0% {
-        transform: scaleY(0);
-        transform-origin: top;
-    }
-    100% {
-        transform: scaleY(1);
-        transform-origin: top;
-    }
-}
 
-@keyframes slideUp {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    20% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    80% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-}
-
-@keyframes openFullScreen {
+@keyframes slideInVertical {
     from {
-        transform: translateY(100%);
-        opacity: 0;
+        transform: translateY(-100%);
     }
     to {
         transform: translateY(0);
-        opacity: 1;
     }
 }
 
-@keyframes closeFullScreen {
+@keyframes slideOutVertical {
     from {
         transform: translateY(0);
-        opacity: 1;
     }
     to {
-        transform: translateY(100%);
-        opacity: 0;
+        transform: translateY(-100%);
     }
 }
 
@@ -776,15 +743,17 @@ img {
 
     .sidebar-wrapper {
         display: none;
+        position: absolute;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 1rem;
         top: 0;
         left: 0;
-        height: 98vh;
+        height: 100vh;
         width: 100vw;
         background-color: var(--background-color);
+        z-index: 2;
     }
 
     .hamburger-icon, .close-icon {
@@ -849,12 +818,12 @@ img {
         width: 80%;
     }
 
-    .open-animation {
-        animation: openFullScreen 0.3s forwards;
+    .sidebar-slide-in-vertical {
+        animation: slideInVertical 0.4s forwards;
     }
     
-    .close-animation {
-        animation: closeFullScreen 0.3s forwards;
+    .sidebar-slide-out-vertical {
+        animation: slideOutVertical 0.4s forwards;
     }
 
 }
