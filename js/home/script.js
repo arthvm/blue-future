@@ -201,7 +201,7 @@ settingsButton.addEventListener('click', function () {
     if (settingsContent.classList.contains('show-settings-content')) {
         settingsContent.classList.remove('show-settings-content')
 
-        /* This timeout is used to ensure the report container appears after the settings container closes */
+        /* This timeout is used to ensure the animation loads before the settings container disapears */
         setTimeout(() => {
             settingsContent.style.display = 'none'
         }, 400)
