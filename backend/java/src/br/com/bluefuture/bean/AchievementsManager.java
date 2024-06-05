@@ -16,6 +16,8 @@ public class AchievementsManager {
     // Utiliza o bloco estático para adicionar as conquistas iniciais.
     static {
         addAchievement(new LevelAchievement());
+        addAchievement(new FirstTrashAchievement());
+        addAchievement(new TrashCollectionAchievement());
     }
 
     /**
@@ -73,7 +75,7 @@ public class AchievementsManager {
             Achievement achievementToUpgrade = achievement.canUpgrade(user);
             if(achievementToUpgrade != null){
                 int index = user.getAchievements().indexOf(achievementToUpgrade);
-                user.getAchievements().get(index).increaseLevel();
+                    user.getAchievements().get(index).increaseLevel();
             }
         }
     }
