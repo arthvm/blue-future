@@ -526,10 +526,19 @@ input[id="collected"]:checked {
     width: 100%;
 }
 
+.settings-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-sizing: content-box;
+    padding: 0rem 1rem;
+}
+
 .settings-content {
+    box-sizing: content-box;
     display: none;
     flex-direction: column;
-    padding: 1rem;
+    /* padding: 0rem 1rem; */
     width: 100%;
     height: 0;
     opacity: 0;
@@ -539,7 +548,7 @@ input[id="collected"]:checked {
 }
 
 .show-settings-content {
-    height: 65vh;
+    height: 75vh;
     opacity: 1;
 }
 
@@ -547,7 +556,6 @@ input[id="collected"]:checked {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 2rem 0.3rem;
     width: 100%;
 }
 .sectiontitle {
@@ -562,7 +570,15 @@ input[id="collected"]:checked {
 
 .text, .description-text {
     margin: 0.15rem 0;
-    width: fit-content;
+    width: 100%;
+}
+
+.description-text, .text {
+    /* margin: 0.15rem 0; */
+    width: 100%; /* ou outro valor que faça sentido para o layout */
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
 }
 
 .default-button:hover {
@@ -606,7 +622,6 @@ input[id="collected"]:checked {
     padding: 0.3rem;
     display: flex;
     flex-direction: column;
-    margin-top: 1.3rem;
 }
 
 .content__divider {
@@ -616,21 +631,25 @@ input[id="collected"]:checked {
 /* Achievements */
 .achievements-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.achievements--wrapper {
+    margin-bottom: 2rem;
 }
 
 .achievements--container {
     background-color: var(--sidebar-widget-color);
     text-align: center;
     border-radius: 1rem;
-    padding: 5%;
-    width: 47%;
+    padding: 0.2rem;
+    width: 6.5rem;
     box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.1);
 }
 
 .achievements-title {
     margin: 0.3rem 0;
-    font-size: 1.1rem;
+    font-size: 0.85rem;
 }
 
 .achievements-description {
