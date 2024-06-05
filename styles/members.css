@@ -254,3 +254,36 @@ p {
     height: 11.9375rem;
   }
 }
+
+@media (max-width: 576px) {
+  .dvt-large {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .dvt-text-large {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .devteam-wrapper {
+    margin: 1.5rem;
+  }
+
+  .devteam-name {
+    font-size: 1.8rem;
+  }
+
+  .devteam-rm {
+    margin-top: 0.7rem;
+  }
+
+  .ian {
+    margin-top: 0.5rem;
+  }
+
+  .devteam-image {
+    width: 12.9375rem;
+    height: 12.9375rem;
+  }
+}
