@@ -2,14 +2,25 @@ package br.com.bluefuture.main;
 
 import br.com.bluefuture.bean.*;
 
-import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Esta classe é usada para testar a funcionalidade do sistema.
+ * Ela fornece uma interface de linha de comando para os usuários interagirem com o sistema.
+ */
 public class Test {
+    /**
+     * Objeto Scanner usado para ler a entrada do usuário.
+     */
     static Scanner scanner = new Scanner(System.in);
+
+    /**
+     * O método principal que conduz o programa.
+     * @param args Argumentos da linha de comando.
+     */
     public static void main(String[] args) {
         boolean isRunning = true;
 
@@ -46,6 +57,9 @@ public class Test {
         System.out.println("Encerrando...");
     }
 
+    /**
+     * Exibe o menu de inscrição e processa a escolha do usuário.
+     */
     private static void signUpMenu() {
         boolean isSigningUp = true;
 
@@ -81,6 +95,9 @@ public class Test {
         System.out.println("Retornando ao menu principal...");
     }
 
+    /**
+     * Cria uma nova conta de usuário.
+     */
     private static void createAccount() {
         boolean isMissingInfo = true;
         User user = new User();
@@ -128,6 +145,10 @@ public class Test {
         }
     }
 
+    /**
+     * Cria uma nova conta de organização.
+     * @param location A localização da organização.
+     */
     private static void createAccount(String location) {
         boolean isMissingInfo = true;
         Organization organization = new Organization();
@@ -177,6 +198,9 @@ public class Test {
         }
     }
 
+    /**
+     * Exibe o menu de login e processa a escolha do usuário.
+     */
     private static void loginMenu() {
         boolean isLoggingIn = true;
 
@@ -200,6 +224,10 @@ public class Test {
         }
     }
 
+    /**
+     * Exibe o menu do usuário e processa a escolha do usuário.
+     * @param user O usuário que está logado.
+     */
     private static void userMenu(User user){
         boolean isUserMenuRunning = true;
 
@@ -326,6 +354,10 @@ public class Test {
         }
     }
 
+    /**
+     * Exibe o menu da organização e processa a escolha do usuário.
+     * @param organization A organização que está logada.
+     */
     private static void organizationMenu(Organization organization){
         boolean isOrgMenuRunning = true;
 
