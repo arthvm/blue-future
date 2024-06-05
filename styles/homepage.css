@@ -810,7 +810,7 @@ img {
         left: auto;
         bottom: auto;
         max-width: 20rem;
-        z-index: 1;
+        z-index: 10;
     }
 
     .tooltip-popup {
