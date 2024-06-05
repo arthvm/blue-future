@@ -51,6 +51,30 @@ body {
     color: var(--primary-color);
 }
 
+.dev-team {
+    display: flex;
+    flex: 0;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.devtext:link {
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: 100ms;
+  }
+  
+  .devtext:link:active {
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    transition: 100ms;
+  }
+  
+  .devtext:visited {
+    color: var(--text-color);
+  }
+
 /* Sidebar styling */
 .sidebar-wrapper {
     display: flex;
@@ -617,7 +641,6 @@ input[id="collected"]:checked {
 
 img {
     width: 25%;
-    margin-bottom: 0.7rem;
 }
 
 /* Alert popup styling */
