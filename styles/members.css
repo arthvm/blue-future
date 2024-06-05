@@ -220,3 +220,37 @@ p {
     margin-top: 2.4rem;
   }
 }
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .dvt-large {
+    flex-direction: row;
+    max-width: 34rem;
+    height: 13.0625rem;
+    justify-content: start;
+  }
+
+  .dvt-text-large {
+    margin-left: 3rem;
+  }
+
+  .devteam-wrapper {
+    margin: 1.5rem;
+  }
+
+  .devteam-name {
+    font-size: 1.6rem;
+  }
+
+  .devteam-rm {
+    margin-top: 0.7rem;
+  }
+
+  .ian {
+    margin-top: 0.5rem;
+  }
+
+  .devteam-image {
+    width: 11.9375rem;
+    height: 11.9375rem;
+  }
+}
