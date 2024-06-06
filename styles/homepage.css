@@ -539,16 +539,16 @@ input[id="collected"]:checked {
   display: none;
   flex-direction: column;
   width: 100%;
-  height: 0;
+  max-height: 0;
   opacity: 0;
   border-radius: 0 0 1.5rem 1.5rem;
   background-color: var(--sidebar-widget-color);
-  transition: height 0.4s ease, opacity 0.4s ease;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
 .show-settings-content {
   opacity: 1;
-  height: fit-content;
+  max-height: 75vh;
 }
 
 .default-section {

@@ -148,7 +148,6 @@ function changeUserBar() {
       ? "none"
       : "2px solid var(--accent-color)";
     profileBar.style.justifyContent = currentUser ? "space-between" : "center";
-    settingsContent.style.minHeight = currentUser ? "75vh" : "40vh";
   }
 
   let changeBtn = document.querySelector(".subtext__link");
@@ -174,7 +173,7 @@ profileBar.addEventListener("click", function () {
     /* This timeout is used to ensure the animation loads before the settings container disapears */
     setTimeout(() => {
       settingsContent.style.display = "none";
-    }, 300);
+    }, 400);
 
     if (!chatbotContent.classList.contains("show-chatbot-content")) {
       sidebarReport.classList.remove("hidden-sidebar-report");
@@ -197,4 +196,4 @@ profileBar.addEventListener("click", function () {
   profileBar.classList.toggle("settings-active");
 });
 
-changeUserBar();
+//changeUserBar();
