@@ -29,13 +29,13 @@ async function signUp(signingUser) {
 
   if (hasAccount) throw new Error("User already exists!");
 
-  const hash = await makeHash(password, undefined);
+  const hashObj = await makeHash(password, undefined);
 
   const newUser = {
     name,
     username,
     email,
-    hash,
+    hashObj,
   };
 
   users.push(newUser);
@@ -43,7 +43,11 @@ async function signUp(signingUser) {
 }
 
 async function makeHash(password, useSalt) {
-  const salt = useSalt ?? window.crypto.getRandomValues(new Uint8Array(16));
+  const salt =
+    useSalt != null
+      ? new Uint8Array([...atob(useSalt)].map((char) => char.charCodeAt(0)))
+      : window.crypto.getRandomValues(new Uint8Array(16));
+
   const passwordBuffer = new TextEncoder().encode(password);
 
   const key = await window.crypto.subtle.importKey(
@@ -69,8 +73,10 @@ async function makeHash(password, useSalt) {
     .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("");
 
+  const saltBase64 = btoa(String.fromCharCode.apply(null, salt));
+
   const hashObj = {
-    salt: salt.toString(),
+    salt: saltBase64,
     hashedPassword,
   };
 
