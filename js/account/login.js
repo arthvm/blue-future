@@ -30,7 +30,6 @@ async function login(loginUser) {
     userAccount.hashObj?.salt ?? undefined
   );
 
-  console.log(loginHashSalt.hash);
   if (!(loginHashSalt.hashedPassword === userAccount.hashObj?.hashedPassword))
     throw new Error("Invalid password!");
 

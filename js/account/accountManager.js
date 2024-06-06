@@ -196,4 +196,4 @@ profileBar.addEventListener("click", function () {
   profileBar.classList.toggle("settings-active");
 });
 
-//changeUserBar();
+changeUserBar();

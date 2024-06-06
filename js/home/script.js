@@ -1,3 +1,5 @@
+import { showAlert } from "../util/alerts.js";
+
 const sidebar = document.getElementById("sidebar");
 const mapWrapper = document.getElementById("map-wrapper");
 const hamburgerIcon = document.getElementById("hamburger-icon");
@@ -15,50 +17,6 @@ const descriptionInput = document.getElementById("description");
 const selectedSeverity = document.getElementById("selected-severity");
 const iframeMap = document.getElementById("iframe-map");
 const checkboxCollected = document.getElementById("collected");
-const alertPopup = document.getElementById("alert-popup");
-const alertTitle = document.getElementById("alert-title");
-const alertDescription = document.getElementById("alert-description");
-const openFullPopup = document.getElementById("open-full-popup");
-const closeFullPopup = document.getElementById("close-full-popup");
-const sidebarSection = document.getElementById("sidebar-section");
-const profileContainer = document.getElementById("profile-sidebar");
-
-/*
-INITIALIZATION
-INITIALIZATION
-*/
-
-/* Ensuring the close sidebar icon doesn't show when the page is loaded */
-closeIcon.style.display = "none";
-
-alertPopup.classList.add("remove-popup");
-
-/*
-SHOW ALERT FUNCTION
-SHOW ALERT FUNCTION
-*/
-
-function showAlert(title, description) {
-  alertTitle.textContent = title;
-  alertDescription.textContent = description;
-
-  alertPopup.classList.remove("remove-popup");
-
-  /* This timeout is used to ensure the animation loads when the alert pop up appears */
-  setTimeout(() => {
-    alertPopup.classList.add("show-popup");
-  }, 1);
-
-  /* This timeout is used to remove the alert pop up after 10 seconds */
-  setTimeout(() => {
-    alertPopup.classList.remove("show-popup");
-
-    /* This timeout is used to remove the alert pop up after the animation ends to prevent the "ghost space" */
-    setTimeout(() => {
-      alertPopup.classList.add("remove-popup");
-    }, 501);
-  }, 10000);
-}
 
 /*
 SIDEBAR TOGGLE
@@ -209,16 +167,17 @@ sendReportButton.addEventListener("click", function () {
   function sendReport(position) {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
-    const trashCollected = checkboxCollected.checked;
+    const collected = checkboxCollected.checked;
+    const user = localStorage.getItem?.("curUser").name ?? "Anonymous";
 
     /* JSON data to be sent to the map endpoint */
     const reportData = {
-      user: "Anonymous",
-      description: description,
-      severity: severity,
-      collected: trashCollected,
-      lat: lat,
-      lng: lng,
+      user,
+      description,
+      severity,
+      collected,
+      lat,
+      lng,
     };
 
     /* Send the report to the map endpoint via POST request */

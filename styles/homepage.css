@@ -49,6 +49,7 @@ body {
 
 .close-icon {
   color: var(--primary-color);
+  display: none;
 }
 
 .dev-team {
