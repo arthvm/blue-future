@@ -21,10 +21,7 @@ const alertDescription = document.getElementById("alert-description");
 const openFullPopup = document.getElementById("open-full-popup");
 const closeFullPopup = document.getElementById("close-full-popup");
 const sidebarSection = document.getElementById("sidebar-section");
-const settingsButton = document.querySelector(".settings--wrapper");
-const settingsContent = document.getElementById("settings-content");
 const profileContainer = document.getElementById("profile-sidebar");
-const chatbotWrapper = document.getElementById("chatbot-wrapper");
 
 /*
 INITIALIZATION
@@ -183,40 +180,6 @@ chatbotButton.addEventListener("click", function () {
   }
   chatbotButton.classList.toggle("chatbot-active");
   chatbotDropdownIcon.classList.toggle("rotate-icon");
-});
-
-/*
-SETTINGS TOGGLE
-SETTINGS TOGGLE
-*/
-
-/* When the settings button is clicked, toggle the settings content and hide the sidebar report */
-settingsButton.addEventListener("click", function () {
-  if (settingsContent.classList.contains("show-settings-content")) {
-    settingsContent.classList.remove("show-settings-content");
-
-    /* This timeout is used to ensure the animation loads before the settings container disapears */
-    setTimeout(() => {
-      settingsContent.style.display = "none";
-    }, 400);
-
-    if (!chatbotContent.classList.contains("show-chatbot-content")) {
-      sidebarReport.classList.remove("hidden-sidebar-report");
-    }
-
-    chatbotWrapper.style.display = "flex";
-  } else {
-    settingsContent.style.display = "flex";
-
-    /* This timeout is used to ensure the animation loads after the settings container appears */
-    setTimeout(() => {
-      settingsContent.classList.add("show-settings-content");
-    }, 1);
-
-    sidebarReport.classList.add("hidden-sidebar-report");
-    chatbotWrapper.style.display = "none";
-  }
-  profileContainer.classList.toggle("settings-active");
 });
 
 /*
