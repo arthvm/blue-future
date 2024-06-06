@@ -1,7 +1,7 @@
 let users = JSON.parse(localStorage.getItem("users")) ?? [];
 
-async function signUp(userObj) {
-  let { name, username = undefined, email, password } = userObj;
+async function signUp(signingUser) {
+  let { name, username = undefined, email, password } = signingUser;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) throw new Error("Email format is invalid!");
@@ -29,7 +29,7 @@ async function signUp(userObj) {
 
   if (hasAccount) throw new Error("User already exists!");
 
-  const hash = await makeHash(password, null);
+  const hash = await makeHash(password, undefined);
 
   const newUser = {
     name,
@@ -69,10 +69,12 @@ async function makeHash(password, useSalt) {
     .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("");
 
-  return {
-    salt: salt.toString,
-    hashedPassword: hashedPassword,
+  const hashObj = {
+    salt: salt.toString(),
+    hashedPassword,
   };
+
+  return hashObj;
 }
 
-export { signUp };
+export { signUp, makeHash };
