@@ -82,7 +82,7 @@ function changeUserBar() {
           </div>
   `;
 
-  profileBar.innerHTML = currentUser ? accountHTML : "Login";
+  profileBar.innerHTML = currentUser ? accountHTML : "<h3>Login</h3>";
   settingsContent.innerHTML = currentUser ? settingsHTML : "Teste";
 
   profileBar.style.border = currentUser
