@@ -109,11 +109,6 @@ p {
   font-size: 1.05rem;
 }
 
-.gmail-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
 .devteam-github-link {
   all: unset;
   display: flex;
