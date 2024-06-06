@@ -4,6 +4,9 @@ let bool = true;
 let profileBar = document.getElementById("profile-sidebar");
 let settingsContent = document.getElementById("settings-content");
 
+const chatbotContent = document.getElementById("chatbot-content");
+const sidebarReport = document.querySelector(".sidebar-report");
+
 function defineForm() {
   let isLoging = bool;
 
