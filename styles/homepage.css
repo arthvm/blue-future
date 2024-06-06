@@ -547,8 +547,8 @@ input[id="collected"]:checked {
 }
 
 .show-settings-content {
-  height: 75vh;
   opacity: 1;
+  height: fit-content;
 }
 
 .default-section {
