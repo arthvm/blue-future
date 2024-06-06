@@ -1,39 +1,42 @@
 let currentUser = localStorage.getItem("curUser") ?? undefined;
 
-const settingsButton = document.querySelector(".settings--wrapper");
+let profileBar = document.getElementById("profile-sidebar");
 let settingsContent = document.getElementById("settings-content");
 
 function changeUserBar() {
-  let hasUserContent = `
-    <div class="profile-sidebar" id="profile-sidebar">
-        <div class="profile-sidebar-left">
-            <img
-            src="./assets/default-profile.webp"
-            alt="User picture"
-            class="profile-image"
-            />
+  let accountHTML = `
+    <div class="profile-sidebar-left">
+        <img
+        src="./assets/default-profile.webp"
+        alt="User picture"
+        class="profile-image"
+        />
 
-            <div class="profile-infos">
-            <h1 class="profile-name">${currentUser?.name ?? undefined}</h1>
+        <div class="profile-infos">
+            <h1 class="profile-name">${
+              currentUser?.name ?? "Não Informado"
+            }</h1>
             <p class="profile-level">Level 5</p>
-            </div>
         </div>
-        <div class="profile-sidebar-right">
-            <img
-                src="./assets/settings-icon.png"
-                alt="Settings Icon"
-                class="settings-icon settings-button"
-                id="settings-button"
-            />
-            </div>
-        </div>
-          <div class="settings-content" id="settings-content">
+    </div>
+    <div class="profile-sidebar-right">
+        <img
+            src="./assets/settings-icon.png"
+            alt="Settings Icon"
+            class="settings-icon settings-button"
+            id="settings-button"
+        />
+    </div>
+    `;
+
+  let settingsHTML = `
+        <div class="settings-content" id="settings-content">
             <div class="achievements--wrapper">
               <div class="options__content">
                 <h2 class="content__title">Achievements</h2>
                 <hr class="content__divider" />
-            </div>
-            <div class="achievements-wrapper">
+              </div>
+              <div class="achievements-wrapper">
                 <div class="achievements--container">
                   <img src="./assets/paper-icon.png" alt="Paper icon" />
                   <h3 class="achievements-title">A Better Future</h3>
@@ -42,14 +45,14 @@ function changeUserBar() {
                   <img src="./assets/landscape-icon.png" alt="Paper icon" />
                   <h3 class="achievements-title">Traveler</h3>
                 </div>
-            </div>
+              </div>
             </div>
             <div class="settings-options">
               <div class="default-section">
                 <div class="email-text">
                   <p class="sectiontitle text">E-mail</p>
                   <p class="description-text">${
-                    currentUser?.email ?? undefined
+                    currentUser?.email ?? "Nao informado"
                   }</p>
                 </div>
                 <button class="default-button">Change</button>
@@ -76,42 +79,30 @@ function changeUserBar() {
                 >
               </div>
             </div>
-    </div>
-    `;
-
-  let signupContent = `
-    <div class="profile-sidebar" id= "profile-sidebar">
-        <h3>Sigup or Login</h3>
-    </div>
-    <div class="settings-content" id="settings-content">
-    
-    </div>
+          </div>
   `;
 
-  settingsButton.innerHTML =
-    currentUser != null ? hasUserContent : signupContent;
+  profileBar.innerHTML = currentUser ? accountHTML : "Login";
+  settingsContent.innerHTML = currentUser ? settingsHTML : "Teste";
 
-  document.getElementById("profile-sidebar").style.border = currentUser
+  profileBar.style.border = currentUser
     ? "none"
     : "2px solid var(--accent-color)";
-  document.getElementById("profile-sidebar").style.justifyContent = currentUser
-    ? "space-between"
-    : "center";
+  profileBar.style.justifyContent = currentUser ? "space-between" : "center";
 }
 
 function setUser(user) {
   localStorage.setItem("curUser", user);
 }
 
-settingsButton.addEventListener("click", function () {
+profileBar.addEventListener("click", function () {
   let chatbotWrapper = document.getElementById("chatbot-wrapper");
-  let sideBar = document.getElementById("profile-sidebar");
   settingsContent = document.getElementById("settings-content");
 
   if (settingsContent.classList.contains("show-settings-content")) {
     settingsContent.classList.remove("show-settings-content");
-    sideBar.style.borderRadius = "1.5rem";
-    sideBar.style.border = "3px solid var(--accent-color)";
+    profileBar.style.borderRadius = "1.5rem";
+    profileBar.style.border = "3px solid var(--accent-color)";
 
     /* This timeout is used to ensure the animation loads before the settings container disapears */
     setTimeout(() => {
@@ -125,8 +116,8 @@ settingsButton.addEventListener("click", function () {
     chatbotWrapper.style.display = "flex";
   } else {
     settingsContent.style.display = "flex";
-    sideBar.style.border = "none";
-    sideBar.style.borderRadius = "1.5rem 1.5rem 0rem 0rem";
+    profileBar.style.border = "none";
+    profileBar.style.borderRadius = "1.5rem 1.5rem 0rem 0rem";
 
     /* This timeout is used to ensure the animation loads after the settings container appears */
     setTimeout(() => {
