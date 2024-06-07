@@ -12,7 +12,7 @@ function showLoadingScreen() {
         setTimeout(() => {
             modalPopup.style.display = "none";
         }, 501)
-    }, 5000);
+    }, 3000);
 
 }
 
