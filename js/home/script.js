@@ -186,7 +186,7 @@ sendReportButton.addEventListener("click", function () {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     const collected = checkboxCollected.checked;
-    const user = localStorage.getItem?.("curUser").name ?? "Anonymous";
+    const user = localStorage.getItem("curUser")?.name ?? "Anonymous";
 
     /* JSON data to be sent to the map endpoint */
     const reportData = {
