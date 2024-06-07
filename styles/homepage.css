@@ -74,6 +74,56 @@ body {
   color: var(--text-color);
 }
 
+/* Modal popup styling */
+.modal-popup {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  gap: 1rem;
+  background-color: var(--background-color);
+  z-index: 1000;
+}
+
+.show-modal {
+  display: flex;
+  opacity: 1;
+}
+
+.remove-modal {
+  display: none;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.wave-logo {
+  width: 5rem;
+  height: 5rem;
+}
+
+.wave-title {
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.loading-gif {
+  width: 3rem;
+  height: 3rem;
+}
+
 /* Sidebar styling */
 .sidebar-wrapper {
   display: none;
@@ -604,6 +654,11 @@ input[id="collected"]:checked {
   color: var(--text-color);
   background-color: var(--severity-high-opacity);
   border: 2px solid var(--severity-high);
+}
+
+.logout-icon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .delete-button:hover {

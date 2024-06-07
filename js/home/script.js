@@ -1,4 +1,5 @@
 import { showAlert } from "../util/alerts.js";
+import { showLoadingScreen } from "../util/loadScreen.js";
 
 const sidebar = document.getElementById("sidebar");
 const mapWrapper = document.getElementById("map-wrapper");
@@ -17,6 +18,13 @@ const descriptionInput = document.getElementById("description");
 const selectedSeverity = document.getElementById("selected-severity");
 const iframeMap = document.getElementById("iframe-map");
 const checkboxCollected = document.getElementById("collected");
+
+/*
+SHOW LOADING SCREEN
+SHOW LOADING SCREEN
+*/
+
+showLoadingScreen();
 
 /*
 SIDEBAR TOGGLE

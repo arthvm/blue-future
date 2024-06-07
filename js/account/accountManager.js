@@ -131,7 +131,7 @@ function changeUserBar() {
             <p class="description-text"></p>
           </div>
           <button class="logout-button">
-            <img src="./assets/settings-icon.png" alt="Logout Icon" />
+            <img src="./assets/logout-icon.png" class="logout-icon" alt="Logout Icon" />
           </button>
         </div>
         <div class="dev-team default-section" id="dev-team">
