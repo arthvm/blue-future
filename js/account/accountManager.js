@@ -1,3 +1,4 @@
+import { showAlert } from "../util/alerts.js";
 import { login } from "./login.js";
 import { signUp } from "./signup.js";
 import { getCurrentUser, saveCurrentUser } from "../util/storage.js";
@@ -63,8 +64,7 @@ async function submitAccountForm(isLogin) {
     saveCurrentUser(account);
     return account;
   } catch (error) {
-    console.error("Error:", error.message);
-    throw error;
+    showAlert("Form error!", error.message);
   }
 }
 
