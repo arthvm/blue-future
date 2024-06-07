@@ -1,39 +1,21 @@
-import { makeHash } from "./signup.js";
+import { makeHash } from "../util/hash.js";
+import { getUsers } from "../util/storage.js";
 
-let users = JSON.parse(localStorage.getItem("users")) ?? [];
+async function login({ username, email, password }) {
+  const users = getUsers();
 
-async function login(loginUser) {
-  let { username = undefined, email, password } = loginUser;
-
-  let userAccount;
-  let hasAccount =
-    users.length == 0
-      ? false
-      : !users.every((user) => {
-          if (user["email"] == email) {
-            userAccount = user;
-            return false;
-          }
-
-          if (user["username"] != null && user["username"] == username) {
-            userAccount = user;
-            return false;
-          }
-
-          return true;
-        });
-
-  if (!hasAccount) throw new Error("User does not exists!");
-
-  let loginHashSalt = await makeHash(
-    password,
-    userAccount.hashObj?.salt ?? undefined
+  const user = users.find(
+    (user) =>
+      user.email === email || (user.username && user.username === username)
   );
+  if (!user) throw new Error("User does not exist!");
 
-  if (!(loginHashSalt.hashedPassword === userAccount.hashObj?.hashedPassword))
+  const hashObj = await makeHash(password, user.hashObj.salt);
+  if (hashObj.hashedPassword !== user.hashObj.hashedPassword)
     throw new Error("Invalid password!");
 
-  return userAccount;
+  console.log("User logged in:", user);
+  return user;
 }
 
 export { login };

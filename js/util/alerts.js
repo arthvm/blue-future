@@ -21,7 +21,7 @@ function showAlert(title, description) {
     setTimeout(() => {
       alertPopup.classList.add("remove-popup");
     }, 501);
-  }, 10000);
+  }, 5000);
 }
 
 export { showAlert };

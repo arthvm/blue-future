@@ -1,150 +1,144 @@
-let currentUser = localStorage.getItem("curUser") ?? undefined;
-let bool = true;
+import { login } from "./login.js";
+import { signUp } from "./signup.js";
+import { getCurrentUser, saveCurrentUser } from "../util/storage.js";
 
+// Variáveis globais
+let bool = true;
+let currentUser = getCurrentUser(); // Mudança para 'let' para permitir reatribuição
 let profileBar = document.getElementById("profile-sidebar");
 let settingsContent = document.getElementById("settings-content");
-
 const chatbotContent = document.getElementById("chatbot-content");
 const sidebarReport = document.querySelector(".sidebar-report");
 
+// Função para definir o formulário
 function defineForm() {
-  let isLoging = bool;
-
-  let nameInput = `
-  <label for="name">
-    Name:
-  </label>
-  <input class="account-form__input" type="text" 
-                id="name" 
-                name="name" 
-                placeholder="Enter your Name" required>
+  const isLoging = bool;
+  const nameInput = isLoging
+    ? ""
+    : `
+    <label for="name">Name:</label>
+    <input class="account-form__input" type="text" id="name" name="name" placeholder="Enter your Name" required>
   `;
 
-  let formHtml = `
-<div class="account-form--wrapper">
-  <form class="account-form" action="">
+  return `
+    <div class="account-form--wrapper">
+      <form class="account-form" action="">
         <div class="form-input--wrapper">
-          ${isLoging ? "" : nameInput}
-          <label for="email">
-                Email:
-          </label>
-          <input class="account-form__input" type="text" 
-                id="email" 
-                name="email" 
-                placeholder="Enter your Email" required>
-          <label for="password">
-                Password:
-          </label>
-          <input class="account-form__input" type="password"
-                id="password" 
-                name="password"
-                placeholder="Enter your Password" required>
+          ${nameInput}
+          <label for="email">Email:</label>
+          <input class="account-form__input" type="text" id="email" name="email" placeholder="Enter your Email" required>
+          <label for="password">Password:</label>
+          <input class="account-form__input" type="password" id="password" name="password" placeholder="Enter your Password" required>
         </div>
-        <button class = "account-form__button" type="submit">${
-          isLoging ? "Login" : "Sign Up"
-        }</button>
-  </form>
-  
-  <p class="account-form__subtext">${
-    isLoging ? "Not registered?" : "Already has an account?"
-  }
-        <span class="subtext__link">
-              ${isLoging ? "Create an account here!" : "Login here!"}
-        </span>
-  </p>
-</div>
+        <button data-login="${isLoging}" class="account-form__button" type="submit">${
+    isLoging ? "Login" : "Sign Up"
+  }</button>
+      </form>
+      <p class="account-form__subtext">
+        ${isLoging ? "Not registered?" : "Already has an account?"}
+        <span class="subtext__link">${
+          isLoging ? "Create an account here!" : "Login here!"
+        }</span>
+      </p>
+    </div>
   `;
-
-  return formHtml;
 }
 
-function changeUserBar() {
-  let accountHtml = `
-    <div class="profile-sidebar-left">
-        <img
-        src="./assets/default-profile.webp"
-        alt="User picture"
-        class="profile-image"
-        />
+// Função para submeter o formulário de conta
+async function submitAccountForm(isLogin) {
+  const name = document.getElementById("name")?.value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-        <div class="profile-infos">
-            <h1 class="profile-name">${
-              currentUser?.name ?? "Não Informado"
-            }</h1>
-            <p class="profile-level">Level 5</p>
-        </div>
+  const user = { name, email, password };
+  let account;
+
+  try {
+    if (isLogin) {
+      account = await login(user);
+    } else {
+      await signUp(user);
+      account = await login(user);
+    }
+    saveCurrentUser(account);
+    return account;
+  } catch (error) {
+    console.error("Error:", error.message);
+    throw error;
+  }
+}
+
+// Função para atualizar a barra de usuário
+function changeUserBar() {
+  currentUser = getCurrentUser();
+  const accountHtml = currentUser
+    ? `
+    <div class="profile-sidebar-left">
+      <img src="./assets/default-profile.webp" alt="User picture" class="profile-image" />
+      <div class="profile-infos">
+        <h1 class="profile-name">${currentUser.name ?? "Não Informado"}</h1>
+        <p class="profile-level">Level 5</p>
+      </div>
     </div>
     <div class="profile-sidebar-right">
-        <img
-            src="./assets/settings-icon.png"
-            alt="Settings Icon"
-            class="settings-icon settings-button"
-            id="settings-button"
-        />
+      <img src="./assets/settings-icon.png" alt="Settings Icon" class="settings-icon settings-button" id="settings-button" />
     </div>
-    `;
+  `
+    : `<h3>${bool ? "Login" : "Sign Up"}</h3>`;
 
-  let settingsHtml = `
-        <div class="settings-content" id="settings-content">
-            <div class="achievements--wrapper">
-              <div class="options__content">
-                <h2 class="content__title">Achievements</h2>
-                <hr class="content__divider" />
-              </div>
-              <div class="achievements-wrapper">
-                <div class="achievements--container">
-                  <img src="./assets/paper-icon.png" alt="Paper icon" />
-                  <h3 class="achievements-title">A Better Future</h3>
-                </div>
-                <div class="achievements--container">
-                  <img src="./assets/landscape-icon.png" alt="Paper icon" />
-                  <h3 class="achievements-title">Traveler</h3>
-                </div>
-              </div>
-            </div>
-            <div class="settings-options">
-              <div class="default-section">
-                <div class="email-text">
-                  <p class="sectiontitle text">E-mail</p>
-                  <p class="description-text">${
-                    currentUser?.email ?? "Nao informado"
-                  }</p>
-                </div>
-                <button class="default-button">Change</button>
-              </div>
-              <div class="default-section">
-                <div class="password-text">
-                  <p class="sectiontitle text">Password</p>
-                  <p class="description-text">********</p>
-                </div>
-                <button class="default-button">Change</button>
-              </div>
-              <div class="default-section">
-                <div class="delete-text">
-                  <p class="sectiontitle">Logout</p>
-                  <p class="description-text"></p>
-                </div>
-                <button class="delete-button">
-                  <img src="./assets/settings-icon.png" alt="Logout Icon" />
-                </button>
-              </div>
-              <div class="dev-team default-section" id="dev-team">
-                <a class="devtext" href="./pages/members.html"
-                  >Check out the Dev team</a
-                >
-              </div>
-            </div>
+  const settingsHtml = currentUser
+    ? `
+      <div class="achievements--wrapper">
+        <div class="options__content">
+          <h2 class="content__title">Achievements</h2>
+          <hr class="content__divider" />
+        </div>
+        <div class="achievements-wrapper">
+          <div class="achievements--container">
+            <img src="./assets/paper-icon.png" alt="Paper icon" />
+            <h3 class="achievements-title">A Better Future</h3>
           </div>
-  `;
+          <div class="achievements--container">
+            <img src="./assets/landscape-icon.png" alt="Paper icon" />
+            <h3 class="achievements-title">Traveler</h3>
+          </div>
+        </div>
+      </div>
+      <div class="settings-options">
+        <div class="default-section">
+          <div class="email-text">
+            <p class="sectiontitle text">E-mail</p>
+            <p class="description-text">${
+              currentUser.email ?? "Nao informado"
+            }</p>
+          </div>
+          <button class="default-button">Change</button>
+        </div>
+        <div class="default-section">
+          <div class="password-text">
+            <p class="sectiontitle text">Password</p>
+            <p class="description-text">********</p>
+          </div>
+          <button class="default-button">Change</button>
+        </div>
+        <div class="default-section">
+          <div class="delete-text">
+            <p class="sectiontitle">Logout</p>
+            <p class="description-text"></p>
+          </div>
+          <button class="delete-button">
+            <img src="./assets/settings-icon.png" alt="Logout Icon" />
+          </button>
+        </div>
+        <div class="dev-team default-section" id="dev-team">
+          <a class="devtext" href="./pages/members.html">Check out the Dev team</a>
+        </div>
+      </div>
+  `
+    : defineForm();
 
-  let formHtml = defineForm();
-
-  profileBar.innerHTML = currentUser
-    ? accountHtml
-    : bool
-    ? "<h3>Login</h3>"
-    : "<h3>Sign Up</h3>";
-  settingsContent.innerHTML = currentUser ? settingsHtml : formHtml;
+  profileBar.innerHTML = accountHtml;
+  settingsContent.innerHTML = settingsHtml;
 
   if (!profileBar.classList.contains("settings-active")) {
     profileBar.style.border = currentUser
@@ -153,27 +147,34 @@ function changeUserBar() {
     profileBar.style.justifyContent = currentUser ? "space-between" : "center";
   }
 
-  let changeBtn = document.querySelector(".subtext__link");
-  changeBtn?.addEventListener("click", () => {
+  document.querySelector(".subtext__link")?.addEventListener("click", () => {
     bool = !bool;
     changeUserBar();
   });
+
+  document
+    .querySelector(".account-form__button")
+    ?.addEventListener("click", async (event) => {
+      event.preventDefault();
+      currentUser = await submitAccountForm(
+        event.target.dataset.login === "true"
+      );
+      changeUserBar();
+      toggleProfileBar();
+    });
 }
 
-function setUser(user) {
-  localStorage.setItem("curUser", user);
-}
-
-profileBar.addEventListener("click", function () {
-  let chatbotWrapper = document.getElementById("chatbot-wrapper");
+// Função para alternar a exibição da barra de perfil
+function toggleProfileBar() {
+  const chatbotWrapper = document.getElementById("chatbot-wrapper");
   settingsContent = document.getElementById("settings-content");
 
   if (settingsContent.classList.contains("show-settings-content")) {
     settingsContent.classList.remove("show-settings-content");
     profileBar.style.borderRadius = "1.5rem";
-    profileBar.style.border = "3px solid var(--accent-color)";
-
-    /* This timeout is used to ensure the animation loads before the settings container disapears */
+    profileBar.style.border = currentUser
+      ? "none"
+      : "3px solid var(--accent-color)";
     setTimeout(() => {
       settingsContent.style.display = "none";
     }, 400);
@@ -187,8 +188,6 @@ profileBar.addEventListener("click", function () {
     settingsContent.style.display = "flex";
     profileBar.style.border = "none";
     profileBar.style.borderRadius = "1.5rem 1.5rem 0rem 0rem";
-
-    /* This timeout is used to ensure the animation loads after the settings container appears */
     setTimeout(() => {
       settingsContent.classList.add("show-settings-content");
     }, 1);
@@ -196,7 +195,13 @@ profileBar.addEventListener("click", function () {
     sidebarReport.classList.add("hidden-sidebar-report");
     chatbotWrapper.style.display = "none";
   }
+
   profileBar.classList.toggle("settings-active");
+}
+
+// Inicialização
+profileBar.addEventListener("click", () => {
+  toggleProfileBar();
 });
 
 changeUserBar();
