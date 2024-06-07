@@ -1,6 +1,6 @@
 const modalPopup = document.getElementById("modal-popup");
 
-function showLoadingScreen(title, description) {
+function showLoadingScreen() {
 
     modalPopup.classList.remove("remove-modal");
     modalPopup.classList.add("show-modal");
@@ -8,6 +8,10 @@ function showLoadingScreen(title, description) {
     setTimeout(() => {
         modalPopup.classList.remove("show-modal");
         modalPopup.classList.add("remove-modal");
+
+        setTimeout(() => {
+            modalPopup.style.display = "none";
+        }, 501)
     }, 5000);
 
 }

@@ -99,7 +99,8 @@ body {
 }
 
 .remove-modal {
-  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .logo-wrapper {
@@ -120,8 +121,8 @@ body {
 }
 
 .loading-gif {
-  width: 3rem;
-  height: 3rem;
+  width: 10rem;
+  height: 10rem;
 }
 
 /* Sidebar styling */
