@@ -1,8 +1,15 @@
 package br.com.bluefuture.bean;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Esta classe representa uma Organização no sistema.
@@ -52,7 +59,37 @@ public class Organization extends Account{
      * @param location A localização a ser definida.
      */
     public void setLocation(String location) {
-        // Implementação omitida para brevidade
+        try {
+            if (location == null) throw new IllegalArgumentException("Argumento inválido --> Esperado uma String não nula");
+
+            String cep;
+            String regex = "\\d{5}-?\\d{3}";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(location);
+
+            if(!(matcher.find())) throw new IllegalArgumentException("Argumento inválido --> CEP não foi" +
+                    " encontrado na String. Certifique-se de que ele tenha 8 dígitos (traço é opcional)");
+
+            cep = matcher.group(0);
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(String.format("https://viacep.com.br/ws/%s/json", cep))).build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() != 200) throw new IOException("Falha ao conectar com a API --> " +
+                    response.statusCode());
+
+            if(response.body().contains("\"erro\": true")) throw new IllegalArgumentException("Argumento inválido --> " +
+                    "O CEP fornecido não era válido");
+
+            this.location = location;
+
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
