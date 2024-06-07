@@ -48,8 +48,12 @@ def save_data(data):
         print(f"Erro ao salvar dados no Appwrite: {e}")
 
 def is_near_water(lat, lon, radius):
-    overpass_url = "http://overpass-api.de/api/interpreter"
+    overpass_url = "http://overpass-api.de/api/interpreter" # URL da API Overpass, que é usada para consultar dados do OpenStreetMap
     # Negocio horrendo de achar documentacao, meu deus. Se precisar mexer nisso aqui no futuro, boa sorte...
+    # A string overpass_query é uma consulta em Overpass QL (Query Language), uma linguagem de consulta usada para fazer perguntas ao banco de dados do OpenStreetMap.
+    # A consulta está procurando por vários tipos de corpos d'água (como água natural, lagos, rios, córregos, reservatórios e lagoas) que estão dentro de um certo raio de uma localização específica.
+    # A localização é definida pelas variáveis lat (latitude) e lon (longitude), e o raio é definido pela variável radius.
+    # A consulta é feita para nós (node), caminhos (way) e relações (relation), que são os três tipos principais de elementos no OpenStreetMap.
     overpass_query = f"""
     [out:json];
     (
