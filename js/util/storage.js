@@ -7,11 +7,21 @@ function saveUsers(users) {
 }
 
 function getCurrentUser() {
-  return JSON.parse(localStorage.getItem("curUser"));
+  return JSON.parse(localStorage.getItem("curUser")) ?? undefined;
 }
 
 function saveCurrentUser(user) {
   localStorage.setItem("curUser", JSON.stringify(user));
 }
 
-export { getUsers, saveUsers, getCurrentUser, saveCurrentUser };
+function removeCurrentUser() {
+  localStorage.removeItem("curUser");
+}
+
+export {
+  getUsers,
+  saveUsers,
+  getCurrentUser,
+  saveCurrentUser,
+  removeCurrentUser,
+};

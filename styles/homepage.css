@@ -589,7 +589,7 @@ input[id="collected"]:checked {
   transition: all 100ms;
 }
 
-.delete-button {
+.logout-button {
   all: unset;
   display: flex;
   align-items: center;

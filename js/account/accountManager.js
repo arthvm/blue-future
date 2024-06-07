@@ -1,7 +1,11 @@
 import { showAlert } from "../util/alerts.js";
 import { login } from "./login.js";
 import { signUp } from "./signup.js";
-import { getCurrentUser, saveCurrentUser } from "../util/storage.js";
+import {
+  getCurrentUser,
+  saveCurrentUser,
+  removeCurrentUser,
+} from "../util/storage.js";
 
 // Variáveis globais
 let bool = true;
@@ -77,7 +81,7 @@ function changeUserBar() {
       <img src="./assets/default-profile.webp" alt="User picture" class="profile-image" />
       <div class="profile-infos">
         <h1 class="profile-name">${currentUser.name ?? "Não Informado"}</h1>
-        <p class="profile-level">Level 5</p>
+        <p class="profile-level">Level 1</p>
       </div>
     </div>
     <div class="profile-sidebar-right">
@@ -126,7 +130,7 @@ function changeUserBar() {
             <p class="sectiontitle">Logout</p>
             <p class="description-text"></p>
           </div>
-          <button class="delete-button">
+          <button class="logout-button">
             <img src="./assets/settings-icon.png" alt="Logout Icon" />
           </button>
         </div>
@@ -146,6 +150,12 @@ function changeUserBar() {
       : "2px solid var(--accent-color)";
     profileBar.style.justifyContent = currentUser ? "space-between" : "center";
   }
+
+  document.querySelector(".logout-button")?.addEventListener("click", () => {
+    removeCurrentUser();
+    changeUserBar();
+    toggleProfileBar();
+  });
 
   document.querySelector(".subtext__link")?.addEventListener("click", () => {
     bool = !bool;
