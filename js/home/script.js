@@ -31,6 +31,16 @@ SIDEBAR TOGGLE
 SIDEBAR TOGGLE
 */
 
+/* Open sidebar on desktop when the page loads */
+if (document.documentElement.clientWidth >= 992) {
+  sidebar.style.display = "flex";
+  sidebar.classList.remove("hidden");
+  mapWrapper.classList.remove("full-width");
+  mapWrapper.classList.add("reduced-width");
+  hamburgerIcon.style.display = "none";
+  closeIcon.style.display = "block";
+}
+
 /* When the hamburger icon is clicked, the sidebar appears */
 hamburgerIcon.addEventListener("click", () => {
   sidebar.style.display = "flex";
