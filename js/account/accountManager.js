@@ -148,8 +148,9 @@ function changeUserBar() {
     profileBar.style.border = currentUser
       ? "none"
       : "2px solid var(--accent-color)";
-    profileBar.style.justifyContent = currentUser ? "space-between" : "center";
   }
+
+  profileBar.style.justifyContent = currentUser ? "space-between" : "center";
 
   document.querySelector(".logout-button")?.addEventListener("click", () => {
     removeCurrentUser();
