@@ -1,0 +1,288 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.participantes--header {
+  display: flex;
+  justify-content: center;
+}
+
+.participantes__title {
+  color: var(--text-color);
+}
+
+.participantes,
+.participantes--main {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.participantes--footer {
+  color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.devteam-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem;
+}
+
+.dvt-large {
+  flex: 1;
+  max-width: 23rem;
+  height: 30.0625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dvt-text-large {
+  margin: 0.5rem 0rem;
+  font-size: 1.0625rem;
+  font-weight: 400;
+}
+
+.dvt-img-large {
+  margin-bottom: 2rem;
+}
+
+.devteam-widget {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  color: var(--text-color);
+  border-radius: 1.5rem;
+  background: var(--secondary-color);
+}
+
+.devteam-widget-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.github-wrapper {
+  display: flex;
+}
+
+.email-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.devteam-image {
+  width: 10.9375rem;
+  height: 10.9375rem;
+  border-radius: 1rem;
+}
+
+.devteam-name {
+  font-size: 1.175rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.devteam-rm {
+  font-size: 1.050rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+p {
+  font-size: 1.05rem;
+}
+
+.devteam-github-link {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 1rem;
+}
+
+.login {
+  all: unset;
+  display: flex;
+  width: 11rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  background: var(--secondary-color);
+  color: var(--text-color);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 150%;
+  cursor: pointer;
+}
+
+.login:last-child {
+  margin-right: 0;
+}
+
+.login i {
+  object-fit: contain;
+  font-size: 1.25rem;
+  margin-right: 1.5rem;
+}
+
+.hoverbtn {
+  transition: background 100ms;
+}
+
+.hoverbtn:hover {
+  background: var(--accent-color);
+}
+
+.hoverbtn:active {
+  background: var(--accent-color);
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+
+.bottomtext:link {
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: background 100ms;
+}
+
+.bottomtext:link:active {
+  letter-spacing: .08em;
+  font-weight: 600;
+}
+
+.bottomtext:visited {
+  color: var(--text-color);
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .dvt-large {
+    width: 16rem;
+    height: 30.0625rem;
+  }
+
+  .devteam-wrapper {
+    margin: 1.5rem;
+  }
+
+  .devteam-name {
+    font-size: 1.6rem;
+  }
+
+  .devteam-rm {
+    margin-top: 0.7rem;
+  }
+
+  .fix-margin {
+    margin-top: 2rem;
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .dvt-large {
+    width: 100%;
+  }
+
+  .devteam-wrapper {
+    margin: 1.5rem;
+  }
+
+  .devteam-name {
+    font-size: 1.6rem;
+  }
+
+  .devteam-rm {
+    margin-top: 0.7rem;
+  }
+
+  .ian, .arthur {
+    margin-top: 2.4rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .dvt-large {
+    flex-direction: row;
+    max-width: 34rem;
+    height: 13.0625rem;
+    justify-content: start;
+  }
+
+  .dvt-text-large {
+    margin-left: 3rem;
+  }
+
+  .devteam-wrapper {
+    margin: 1.5rem;
+  }
+
+  .devteam-name {
+    font-size: 1.2rem;
+  }
+
+  .devteam-rm {
+    margin-top: 0.7rem;
+  }
+
+  .ian {
+    margin-top: 0.5rem;
+  }
+
+  .devteam-image {
+    width: 11.9375rem;
+    height: 11.9375rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .dvt-large {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .dvt-text-large {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .devteam-wrapper {
+    margin: 1.5rem;
+  }
+
+  .devteam-name {
+    font-size: 1.8rem;
+  }
+
+  .devteam-rm {
+    margin-top: 0.7rem;
+  }
+
+  .ian {
+    margin-top: 0.5rem;
+  }
+
+  .devteam-image {
+    width: 12.9375rem;
+    height: 12.9375rem;
+  }
+}

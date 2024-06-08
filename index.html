@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./assets/favicon.ico" rel="shortcut icon">
+  <link rel="stylesheet" href="./styles/normalize.css">
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/homepage.css">
+  <script src="https://kit.fontawesome.com/a5cb30fd77.js" crossorigin="anonymous"></script>
+  <script src="./js/home/script.js" type="module"></script>
+  <script src="./js/account/accountManager.js" type="module"></script>
+  <title>Wave | A onda da mudança</title>
+</head>
+
+<body>
+
+  <main class="homepage-main">
+
+    <dialog class="modal-popup" id="modal-popup">
+      <div class="logo-wrapper">
+        <img src="./assets/logo.png" class="wave-logo" alt="Wave Logo">
+        <h1 class="wave-title">Wave</h1>
+      </div>
+      <img src="./assets/loading-animation.svg" class="loading-gif" alt="Loading Animation">
+    </dialog>
+
+    <div class="sidebar-wrapper hidden" id="sidebar">
+      <i class="fa-solid fa-xmark fa-2xl close-icon" id="close-icon"></i>
+
+      <div class="wave-sidebar-branding">
+        <img src="./assets/logo.png" class="wave-sidebar-logo" alt="Wave Logo">
+        <div class="wave-text-branding">
+          <h1 class="wave-sidebar-title">Wave</h1>
+          <p class="wave-sidebar-description">A onda da mudança</p>
+        </div>
+      </div>
+
+      <div class="sidebar-report">
+        <h1 class="report-title">Report Trash</h1>
+        <hr class="report-divider">
+        <textarea name="Description" class="description-input" id="description" maxlength="256" cols="33" rows="5" placeholder="Description"></textarea>
+        <div class="dropdown-tooltip">
+          <div class="dropdown-severity">
+            <button class="dropdown-button" id="severity-dropdown">
+              <span class="severity-button-left" id="selected-severity">
+                <img src="./assets/severity-icon.png" alt="Severity Icon" class="severity-icon">
+                Severity
+              </span>
+              <i class="fa-solid fa-angle-down fa-xl" id="rotate-icon"></i>
+            </button>
+            <div class="dropdown-content" id="dropdown-content">
+              <a class="dropdown-option severity-low" id="dropdown-option-low" href="">Low</a>
+              <a class="dropdown-option severity-medium" id="dropdown-option-medium" href="">Medium</a>
+              <a class="dropdown-option severity-high" id="dropdown-option-high" href="">High</a>
+            </div>
+          </div>
+          <div class="severity-tooltip">
+            <button class="tooltip-button">
+              <img src="./assets/tooltip-icon.png" alt="Informations Icon" class="tooltip-icon">
+            </button>
+            <div class="tooltip-popup">
+              <p class="tooltip-description">
+                <span class="tdesc-low">Low: </span>Trash is not a threat to
+                the environment or animals.
+              </p>
+              <p class="tooltip-description">
+                <span class="tdesc-medium">Medium: </span>Trash is a threat to
+                the environment or animals.
+              </p>
+              <p class="tooltip-description">
+                <span class="tdesc-high">High: </span>Trash is a severe threat
+                to the environment or animals.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="collected-wrapper">
+          <input type="checkbox" name="collected" id="collected" class="collected-checkbox">
+          <label for="collected" class="collected-label">Trash collected</label>
+        </div>
+        <button class="send-button" id="send-report">
+          Submit
+          <img src="./assets/send-icon.png" alt="Send message icon" class="send-icon">
+        </button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="chatbot-wrapper" id="chatbot-wrapper">
+          <button class="sidebar-dropdown chatbot-dropdown" id="chatbot-button">
+            <span class="sidebar-left">
+              <img src="./assets/chatbot-icon.png" alt="ChatBot Icon" class="sidebar-icon globe-icon">
+              <span class="sidebar-title">ChatBot</span>
+            </span>
+            <i class="fa-solid fa-angle-up fa-xl" id="chatbot-dropdown-icon"></i>
+          </button>
+          <div class="chatbot-content" id="chatbot-content">
+            <iframe src="https://autoinsight-bot.vercel.app/wavebot" class="chatbot-iframe" id="chatbot-iframe-id" title="ChatBot widget"></iframe>
+          </div>
+        </div>
+
+        <div class="settings--wrapper">
+          <div class="profile-sidebar" id="profile-sidebar">
+            <div class="profile-sidebar-left">
+              <img src="./assets/default-profile.webp" alt="User picture" class="profile-image">
+
+              <div class="profile-infos">
+                <h1 class="profile-name">Guilherme</h1>
+                <p class="profile-level">Level 5</p>
+              </div>
+            </div>
+            <div class="profile-sidebar-right">
+              <img src="./assets/settings-icon.png" alt="Settings Icon" class="settings-icon settings-button" id="settings-button">
+            </div>
+          </div>
+          <div class="settings-content" id="settings-content">
+            <div class="achievements--wrapper">
+              <div class="options__content">
+                <h2 class="content__title">Achievements</h2>
+                <hr class="content__divider">
+              </div>
+              <div class="achievements-wrapper">
+                <div class="achievements--container">
+                  <img src="./assets/paper-icon.png" alt="Paper icon">
+                  <h3 class="achievements-title">A Better Future</h3>
+                </div>
+                <div class="achievements--container">
+                  <img src="./assets/landscape-icon.png" alt="Paper icon">
+                  <h3 class="achievements-title">Traveler</h3>
+                </div>
+              </div>
+            </div>
+            <div class="settings-options">
+              <div class="default-section">
+                <div class="email-text">
+                  <p class="sectiontitle text">E-mail</p>
+                  <p class="description-text">guimaggi@gmail.com</p>
+                </div>
+                <button class="default-button">Change</button>
+              </div>
+              <div class="default-section">
+                <div class="password-text">
+                  <p class="sectiontitle text">Password</p>
+                  <p class="description-text">********</p>
+                </div>
+                <button class="default-button">Change</button>
+              </div>
+              <div class="default-section">
+                <div class="number-text">
+                  <p class="sectiontitle text">Number</p>
+                  <p class="description-text">+55 (11) 4002-8922</p>
+                </div>
+                <button class="default-button">Change</button>
+              </div>
+              <div class="default-section">
+                <div class="delete-text">
+                  <p class="sectiontitle">Logout</p>
+                  <p class="description-text"></p>
+                </div>
+                <button class="delete-button">
+                  <img src="./assets/logout-icon.png" class="logout-icon" alt="Logout Icon">
+                </button>
+              </div>
+              <div class="dev-team default-section" id="dev-team">
+                <a class="devtext" href="./pages/members.html">Check out the Dev team</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="map-wrapper full-width" id="map-wrapper">
+      <i class="fa-solid fa-bars-staggered fa-2xl hamburger-icon" id="hamburger-icon"></i>
+
+      <div class="alert-popup remove-popup" id="alert-popup">
+        <img src="./assets/alert-popup.png" alt="Error popup" class="alert-image">
+        <div class="alert-column">
+          <h1 class="alert-title" id="alert-title">Alert Title</h1>
+          <p class="alert-description" id="alert-description">
+            Alert Description
+          </p>
+        </div>
+      </div>
+
+      <iframe src="https://bluefuture-trashmap.onrender.com" class="map" title="Map widget" id="iframe-map"></iframe>
+    </div>
+  </main>
+</body>
+
+</html>
